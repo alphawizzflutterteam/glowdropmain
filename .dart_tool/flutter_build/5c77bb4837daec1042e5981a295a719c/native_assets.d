@@ -1,0 +1,1 @@
+ D:\\Townway_usermain\\.dart_tool\\flutter_build\\5c77bb4837daec1042e5981a295a719c\\native_assets.yaml: 
