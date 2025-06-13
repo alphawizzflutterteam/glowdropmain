@@ -45,7 +45,7 @@ class WalletScreen extends StatelessWidget {
         backgroundColor: ColorResources.getIconBg(context),
         body: RefreshIndicator(
           color: Theme.of(context).cardColor,
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: ColorResources.primary,
           onRefresh: () async {
             Provider.of<WalletTransactionProvider>(context, listen: false)
                 .getTransactionList(context, 1, reload: true);
@@ -95,8 +95,7 @@ class WalletScreen extends StatelessWidget {
                                               horizontal:
                                                   Dimensions.paddingSizeSmall),
                                           decoration: BoxDecoration(
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: ColorResources.primary,
                                             borderRadius: BorderRadius.circular(
                                                 Dimensions.paddingSizeSmall),
                                             boxShadow: [
@@ -188,8 +187,7 @@ class WalletScreen extends StatelessWidget {
                                               horizontal:
                                                   Dimensions.paddingSizeSmall),
                                           decoration: BoxDecoration(
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: ColorResources.primary,
                                             borderRadius: BorderRadius.circular(
                                                 Dimensions.paddingSizeSmall),
                                             boxShadow: [
@@ -270,9 +268,8 @@ class WalletScreen extends StatelessWidget {
                                                             child: Text(
                                                                 "Send Money",
                                                                 style: titilliumRegular.copyWith(
-                                                                    color: Theme.of(
-                                                                            context)
-                                                                        .primaryColor,
+                                                                    color: ColorResources
+                                                                        .primary,
                                                                     fontSize:
                                                                         Dimensions
                                                                             .fontSizeDefault)),
@@ -340,8 +337,7 @@ class WalletScreen extends StatelessWidget {
                                               horizontal:
                                                   Dimensions.paddingSizeSmall),
                                           decoration: BoxDecoration(
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: ColorResources.primary,
                                             borderRadius: BorderRadius.circular(
                                                 Dimensions.paddingSizeSmall),
                                             boxShadow: [
@@ -438,8 +434,7 @@ class WalletScreen extends StatelessWidget {
                                               horizontal:
                                                   Dimensions.paddingSizeSmall),
                                           decoration: BoxDecoration(
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: ColorResources.primary,
                                             borderRadius: BorderRadius.circular(
                                                 Dimensions.paddingSizeSmall),
                                             boxShadow: [
@@ -551,9 +546,8 @@ class WalletScreen extends StatelessWidget {
                                                               child: Text(
                                                                   "Withdraw",
                                                                   style: titilliumRegular.copyWith(
-                                                                      color: Theme.of(
-                                                                              context)
-                                                                          .primaryColor,
+                                                                      color: ColorResources
+                                                                          .primary,
                                                                       fontSize:
                                                                           Dimensions
                                                                               .fontSizeDefault)),
@@ -586,7 +580,7 @@ class WalletScreen extends StatelessWidget {
                                           horizontal:
                                               Dimensions.paddingSizeSmall),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).primaryColor,
+                                        color: ColorResources.primary,
                                         borderRadius: BorderRadius.circular(
                                             Dimensions.paddingSizeSmall),
                                         boxShadow: [
@@ -683,7 +677,7 @@ class WalletScreen extends StatelessWidget {
                                                           Padding(
                                                             padding:
                                                                 const EdgeInsets
-                                                                    .symmetric(
+                                                                        .symmetric(
                                                                     horizontal:
                                                                         8.0),
                                                             child: InkWell(
@@ -704,9 +698,8 @@ class WalletScreen extends StatelessWidget {
                                                               child: Text(
                                                                   "Withdraw ",
                                                                   style: titilliumRegular.copyWith(
-                                                                      color: Theme.of(
-                                                                              context)
-                                                                          .primaryColor,
+                                                                      color: ColorResources
+                                                                          .primary,
                                                                       fontSize:
                                                                           Dimensions
                                                                               .fontSizeDefault)),
@@ -752,8 +745,7 @@ class WalletScreen extends StatelessWidget {
                                               horizontal:
                                                   Dimensions.paddingSizeSmall),
                                           decoration: BoxDecoration(
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: ColorResources.primary,
                                             borderRadius: BorderRadius.circular(
                                                 Dimensions.paddingSizeSmall),
                                             boxShadow: [
@@ -849,8 +841,7 @@ class WalletScreen extends StatelessWidget {
                                               horizontal:
                                                   Dimensions.paddingSizeSmall),
                                           decoration: BoxDecoration(
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: ColorResources.primary,
                                             borderRadius: BorderRadius.circular(
                                                 Dimensions.paddingSizeSmall),
                                             boxShadow: [
@@ -961,9 +952,8 @@ class WalletScreen extends StatelessWidget {
                                                               child: Text(
                                                                   "Withdrawl",
                                                                   style: titilliumRegular.copyWith(
-                                                                      color: Theme.of(
-                                                                              context)
-                                                                          .primaryColor,
+                                                                      color: ColorResources
+                                                                          .primary,
                                                                       fontSize:
                                                                           Dimensions
                                                                               .fontSizeDefault)),

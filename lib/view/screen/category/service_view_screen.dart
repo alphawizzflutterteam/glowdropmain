@@ -20,7 +20,7 @@ class ServiceViewScreen extends StatelessWidget {
       builder: (context, categoryProvider, child) {
         return categoryProvider.serviceCategoryList.isNotEmpty
             ? SizedBox(
-                height: 100,
+                height: 110,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categoryProvider.serviceCategoryList.length,

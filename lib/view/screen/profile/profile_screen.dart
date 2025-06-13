@@ -122,8 +122,7 @@ class ProfileScreenState extends State<ProfileScreen> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Change something to update'),
           backgroundColor: ColorResources.red));
-    } else
-    if (firstName.isEmpty || lastName.isEmpty) {
+    } else if (firstName.isEmpty || lastName.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(getTranslated('NAME_FIELD_MUST_BE_REQUIRED', context)!),
           backgroundColor: ColorResources.red));
@@ -242,7 +241,6 @@ class ProfileScreenState extends State<ProfileScreen> {
           }
 
           return Stack(
-
             clipBehavior: Clip.none,
             children: [
               Positioned(
@@ -273,13 +271,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: CupertinoNavigationBarBackButton(
-                        onPressed: () => Navigator.of(context).pop(),
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.centerLeft,
+                    //   child: CupertinoNavigationBarBackButton(
+                    //     onPressed: () => Navigator.of(context).pop(),
+                    //     color: Theme.of(context).primaryColor,
+                    //   ),
+                    // ),
                     Center(
                       child: Text(
                         getTranslated('PROFILE', context)!,
@@ -296,7 +294,6 @@ class ProfileScreenState extends State<ProfileScreen> {
               ),
 // SizedBox(height: 20,),
               Container(
-
                 // padding: const EdgeInsets.only(top: 55),
                 child: Column(
                   children: [
@@ -362,7 +359,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         Text(
                           '${profile.userInfoModel!.fName} ${profile.userInfoModel!.lName ?? ''}',
                           style: titilliumSemiBold.copyWith(
-                              color: ColorResources.white, fontSize: 20.0),
+                              color: ColorResources.black, fontSize: 20.0),
                         )
                       ],
                     ),
@@ -372,7 +369,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: ColorResources.getIconBg(context),
+                              color: Theme.of(context).primaryColor,
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(
                                     Dimensions.marginSizeDefault),
@@ -383,7 +380,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                             physics: const BouncingScrollPhysics(),
                             children: [
                               Container(
-
                                 color: Theme.of(context).primaryColor,
                                 margin: const EdgeInsets.only(
                                     left: Dimensions.marginSizeDefault,
@@ -392,26 +388,20 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Expanded(
                                         child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.person,
-                                                color: ColorResources
-                                                    .getLightSkyBlue(context),
-                                                size: 20),
-                                            const SizedBox(
-                                                width: Dimensions
-                                                    .marginSizeExtraSmall),
-                                            Text(
-                                                getTranslated(
-                                                    'FIRST_NAME', context)!,
-                                                style: titilliumRegular)
-                                          ],
-                                        ),
+                                        Text(
+                                            getTranslated(
+                                                'FIRST_NAME', context)!,
+                                            style: titilliumRegular),
                                         const SizedBox(
                                             height: Dimensions.marginSizeSmall),
                                         CustomTextField(
                                           textInputType: TextInputType.name,
+                                          prefixIcon: const Icon(Icons.person,
+                                              color: ColorResources.primary,
+                                              size: 20),
                                           focusNode: _fNameFocus,
                                           nextNode: _lNameFocus,
                                           hintText:
@@ -425,25 +415,19 @@ class ProfileScreenState extends State<ProfileScreen> {
                                         width: Dimensions.paddingSizeDefault),
                                     Expanded(
                                         child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.person,
-                                                color: ColorResources
-                                                    .getLightSkyBlue(context),
-                                                size: 20),
-                                            const SizedBox(
-                                                width: Dimensions
-                                                    .marginSizeExtraSmall),
-                                            Text(
-                                                getTranslated(
-                                                    'LAST_NAME', context)!,
-                                                style: titilliumRegular)
-                                          ],
-                                        ),
+                                        Text(
+                                            getTranslated(
+                                                'LAST_NAME', context)!,
+                                            style: titilliumRegular),
                                         const SizedBox(
                                             height: Dimensions.marginSizeSmall),
                                         CustomTextField(
+                                          prefixIcon: const Icon(Icons.person,
+                                              color: ColorResources.primary,
+                                              size: 20),
                                           textInputType: TextInputType.name,
                                           focusNode: _lNameFocus,
                                           nextNode: _emailFocus,
@@ -459,32 +443,23 @@ class ProfileScreenState extends State<ProfileScreen> {
 
                               Container(
                                 color: Theme.of(context).primaryColor,
-
                                 margin: const EdgeInsets.only(
                                     top: Dimensions.marginSizeDefault,
                                     left: Dimensions.marginSizeDefault,
                                     right: Dimensions.marginSizeDefault),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.alternate_email,
-                                            color:
-                                                ColorResources.getLightSkyBlue(
-                                                    context),
-                                            size: 20),
-                                        const SizedBox(
-                                          width:
-                                              Dimensions.marginSizeExtraSmall,
-                                        ),
-                                        Text(getTranslated('EMAIL', context)!,
-                                            style: titilliumRegular)
-                                      ],
-                                    ),
+                                    Text(getTranslated('EMAIL', context)!,
+                                        style: titilliumRegular),
                                     const SizedBox(
                                         height: Dimensions.marginSizeSmall),
                                     CustomTextField(
                                       isReadOnly: false,
+                                      prefixIcon: const Icon(
+                                          Icons.alternate_email,
+                                          color: ColorResources.primary,
+                                          size: 20),
                                       textInputType: TextInputType.emailAddress,
                                       focusNode: _emailFocus,
                                       isEnable: false,
@@ -536,33 +511,28 @@ class ProfileScreenState extends State<ProfileScreen> {
                               // ),
 
                               Container(
+                                color: Theme.of(context).primaryColor,
                                 margin: const EdgeInsets.only(
                                     top: Dimensions.marginSizeDefault,
                                     left: Dimensions.marginSizeDefault,
                                     right: Dimensions.marginSizeDefault),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.dialpad,
-                                            color:
-                                                ColorResources.getLightSkyBlue(
-                                                    context),
-                                            size: 20),
-                                        const SizedBox(
-                                            width: Dimensions
-                                                .marginSizeExtraSmall),
-                                        Text(
-                                            getTranslated('PHONE_NO', context)!,
-                                            style: titilliumRegular)
-                                      ],
-                                    ),
+                                    Text(getTranslated('PHONE_NO', context)!,
+                                        style: titilliumRegular),
                                     const SizedBox(
                                         height: Dimensions.marginSizeSmall),
                                     CustomTextField(
                                       isReadOnly: true,
+                                      prefixIcon: const Icon(Icons.dialpad,
+                                          color: ColorResources.primary,
+                                          size: 20),
                                       textInputType: TextInputType.phone,
                                       focusNode: _phoneFocus,
+                                      fillColor: Theme.of(context)
+                                          .hintColor
+                                          .withOpacity(.12),
                                       hintText:
                                           profile.userInfoModel!.phone ?? "",
                                       nextNode: _addressFocus,
@@ -575,123 +545,123 @@ class ProfileScreenState extends State<ProfileScreen> {
                               SizedBox(
                                 height: 10,
                               ),
-                              InkWell(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 8, right: 8),
-                                  child: Card(
-                                    elevation: null,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: Container(
-                                      //
-                                      // margin: const EdgeInsets.only(
-                                      //     left: Dimensions.marginSizeDefault,
-                                      //     right: Dimensions.marginSizeDefault,
-                                      //     top: Dimensions.marginSizeSmall),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.location_on_outlined,
-                                            size: 20,
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Expanded(
-                                              child: Text(
-                                            _addressController.text == ''
-                                                ? 'Address'
-                                                : _addressController.text,
-                                            style: TextStyle(fontSize: 16),
-                                          )),
-                                        ],
-                                      ),
-                                      width: MediaQuery.sizeOf(context).width,
-                                      height: 50,
-                                      // CustomTextField(
-                                      //   hintText:'Address',
-                                      //   isReadOnly: true,
-                                      //   prefixIcon: const Icon(Icons.location_on_outlined),
-                                      //   // focusNode: _emailFocus,
-                                      //   // nextNode: _phoneFocus,
-                                      //   textInputType: TextInputType.text,
-                                      //   controller: _addressController,
-                                      // ),
-                                    ),
-                                  ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PlacePicker(
-                                        apiKey: Platform.isAndroid
-                                            ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-                                            : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
-                                        onPlacePicked: (result) {
-                                          _addressController.text =
-                                              result.formattedAddress ?? '';
-                                          print(
-                                              'Full Address: ${result.formattedAddress}');
+                              // InkWell(
+                              //   child: Padding(
+                              //     padding:
+                              //         const EdgeInsets.only(left: 8, right: 8),
+                              //     child: Card(
+                              //       elevation: null,
+                              //       shape: RoundedRectangleBorder(
+                              //           borderRadius: BorderRadius.circular(8)),
+                              //       child: Container(
+                              //         //
+                              //         // margin: const EdgeInsets.only(
+                              //         //     left: Dimensions.marginSizeDefault,
+                              //         //     right: Dimensions.marginSizeDefault,
+                              //         //     top: Dimensions.marginSizeSmall),
+                              //         decoration: BoxDecoration(
+                              //           color: Colors.white,
+                              //           borderRadius: BorderRadius.circular(8),
+                              //         ),
+                              //         child: Row(
+                              //           children: [
+                              //             Icon(
+                              //               Icons.location_on_outlined,
+                              //               size: 20,
+                              //             ),
+                              //             SizedBox(
+                              //               width: 15,
+                              //             ),
+                              //             Expanded(
+                              //                 child: Text(
+                              //               _addressController.text == ''
+                              //                   ? 'Address'
+                              //                   : _addressController.text,
+                              //               style: TextStyle(fontSize: 16),
+                              //             )),
+                              //           ],
+                              //         ),
+                              //         width: MediaQuery.sizeOf(context).width,
+                              //         height: 50,
+                              //         // CustomTextField(
+                              //         //   hintText:'Address',
+                              //         //   isReadOnly: true,
+                              //         //   prefixIcon: const Icon(Icons.location_on_outlined),
+                              //         //   // focusNode: _emailFocus,
+                              //         //   // nextNode: _phoneFocus,
+                              //         //   textInputType: TextInputType.text,
+                              //         //   controller: _addressController,
+                              //         // ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: (context) => PlacePicker(
+                              //           apiKey: Platform.isAndroid
+                              //               ? ""
+                              //               : "",
+                              //           onPlacePicked: (result) {
+                              //             _addressController.text =
+                              //                 result.formattedAddress ?? '';
+                              //             print(
+                              //                 'Full Address: ${result.formattedAddress}');
 
-                                          // Extract components from address
-                                          for (var component
-                                              in result.addressComponents!) {
-                                            if (component.types.contains(
-                                                'administrative_area_level_1')) {
-                                              _stateController.text =
-                                                  component.longName; // State
-                                            } else if (component.types
-                                                .contains('locality')) {
-                                              _cityController.text =
-                                                  component.longName; // City
-                                            } else if (component.types.contains(
-                                                    'sublocality_level_1') ||
-                                                component.types
-                                                    .contains('neighborhood')) {
-                                              _areaController.text =
-                                                  component.longName; // Area
-                                            } else if (component.types
-                                                .contains('postal_code')) {
-                                              _zipCodeController.text =
-                                                  component.longName; // Pincode
-                                            }
-                                          }
+                              //             // Extract components from address
+                              //             for (var component
+                              //                 in result.addressComponents!) {
+                              //               if (component.types.contains(
+                              //                   'administrative_area_level_1')) {
+                              //                 _stateController.text =
+                              //                     component.longName; // State
+                              //               } else if (component.types
+                              //                   .contains('locality')) {
+                              //                 _cityController.text =
+                              //                     component.longName; // City
+                              //               } else if (component.types.contains(
+                              //                       'sublocality_level_1') ||
+                              //                   component.types
+                              //                       .contains('neighborhood')) {
+                              //                 _areaController.text =
+                              //                     component.longName; // Area
+                              //               } else if (component.types
+                              //                   .contains('postal_code')) {
+                              //                 _zipCodeController.text =
+                              //                     component.longName; // Pincode
+                              //               }
+                              //             }
 
-                                          print(
-                                              'State: ${_stateController.text}');
-                                          print(
-                                              'City: ${_cityController.text}');
-                                          print(
-                                              'Area: ${_areaController.text}');
-                                          print(
-                                              'Pincode: ${_zipCodeController.text}');
-                                          // _addressController.text = result.formattedAddress.toString();
-                                          // lat = result.geometry!.location.lat;
-                                          _latController.text = result
-                                              .geometry!.location.lat
-                                              .toString();
-                                          _longController.text = result
-                                              .geometry!.location.lng
-                                              .toString();
-                                          // setState(() {
-                                          //
-                                          // });
-                                          Navigator.of(context).pop();
-                                        },
-                                        initialPosition:
-                                            const LatLng(22.719568, 75.857727),
-                                        useCurrentLocation: true,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                              //             print(
+                              //                 'State: ${_stateController.text}');
+                              //             print(
+                              //                 'City: ${_cityController.text}');
+                              //             print(
+                              //                 'Area: ${_areaController.text}');
+                              //             print(
+                              //                 'Pincode: ${_zipCodeController.text}');
+                              //             // _addressController.text = result.formattedAddress.toString();
+                              //             // lat = result.geometry!.location.lat;
+                              //             _latController.text = result
+                              //                 .geometry!.location.lat
+                              //                 .toString();
+                              //             _longController.text = result
+                              //                 .geometry!.location.lng
+                              //                 .toString();
+                              //             // setState(() {
+                              //             //
+                              //             // });
+                              //             Navigator.of(context).pop();
+                              //           },
+                              //           initialPosition:
+                              //               const LatLng(22.719568, 75.857727),
+                              //           useCurrentLocation: true,
+                              //         ),
+                              //       ),
+                              //     );
+                              //   },
+                              // ),
                               // Consumer<LocationProvider>(
                               //     builder: (context, locationProvider, child) {
                               //   return Container(
@@ -796,15 +766,26 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     left: Dimensions.marginSizeDefault,
                                     right: Dimensions.marginSizeDefault,
                                     top: Dimensions.marginSizeSmall),
-                                child: CustomTextField(
-                                  hintText: getTranslated(
-                                      'ENTER_YOUR_STATE', context),
-                                  isReadOnly: true,
-                                  prefixIcon: const Icon(Icons.location_city),
-                                  // focusNode: _emailFocus,
-                                  // nextNode: _phoneFocus,
-                                  textInputType: TextInputType.text,
-                                  controller: _stateController,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        getTranslated(
+                                            'ENTER_YOUR_ADDRESS', context)!,
+                                        style: titilliumRegular),
+                                    const SizedBox(
+                                        height: Dimensions.marginSizeSmall),
+                                    CustomTextField(
+                                      hintText: getTranslated(
+                                          'ENTER_YOUR_ADDRESS', context),
+                                      prefixIcon:
+                                          const Icon(Icons.location_city),
+                                      // focusNode: _emailFocus,
+                                      // nextNode: _phoneFocus,
+                                      textInputType: TextInputType.text,
+                                      controller: _addressController,
+                                    ),
+                                  ],
                                 ),
                               ),
 
@@ -813,15 +794,55 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     left: Dimensions.marginSizeDefault,
                                     right: Dimensions.marginSizeDefault,
                                     top: Dimensions.marginSizeSmall),
-                                child: CustomTextField(
-                                  // isReadOnly: true,
-                                  hintText:
-                                      getTranslated('ENTER_YOUR_CITY', context),
-                                  prefixIcon: const Icon(Icons.location_city),
-                                  // focusNode: _emailFocus,
-                                  // nextNode: _phoneFocus,
-                                  textInputType: TextInputType.text,
-                                  controller: _cityController,
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          getTranslated(
+                                              'ENTER_YOUR_STATE', context)!,
+                                          style: titilliumRegular),
+                                      const SizedBox(
+                                          height: Dimensions.marginSizeSmall),
+                                      CustomTextField(
+                                        hintText: getTranslated(
+                                            'ENTER_YOUR_STATE', context),
+                                        prefixIcon:
+                                            const Icon(Icons.location_city),
+                                        // focusNode: _emailFocus,
+                                        // nextNode: _phoneFocus,
+                                        textInputType: TextInputType.text,
+                                        controller: _stateController,
+                                      )
+                                    ]),
+                              ),
+
+                              Container(
+                                margin: const EdgeInsets.only(
+                                    left: Dimensions.marginSizeDefault,
+                                    right: Dimensions.marginSizeDefault,
+                                    top: Dimensions.marginSizeSmall),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        getTranslated(
+                                            'ENTER_YOUR_CITY', context)!,
+                                        style: titilliumRegular),
+                                    const SizedBox(
+                                        height: Dimensions.marginSizeSmall),
+                                    CustomTextField(
+                                      // isReadOnly: true,
+                                      hintText: getTranslated(
+                                          'ENTER_YOUR_CITY', context),
+                                      prefixIcon:
+                                          const Icon(Icons.location_city),
+                                      // focusNode: _emailFocus,
+                                      // nextNode: _phoneFocus,
+                                      textInputType: TextInputType.text,
+                                      controller: _cityController,
+                                    ),
+                                  ],
                                 ),
                               ),
 
@@ -831,24 +852,17 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     left: Dimensions.marginSizeDefault,
                                     right: Dimensions.marginSizeDefault),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.lock_open,
-                                            color: ColorResources.getPrimary(
-                                                context),
-                                            size: 20),
-                                        const SizedBox(
-                                            width: Dimensions
-                                                .marginSizeExtraSmall),
-                                        Text(
-                                            getTranslated('PASSWORD', context)!,
-                                            style: titilliumRegular)
-                                      ],
-                                    ),
+                                    Text(getTranslated('PASSWORD', context)!,
+                                        style: titilliumRegular),
                                     const SizedBox(
                                         height: Dimensions.marginSizeSmall),
                                     CustomPasswordTextField(
+                                      prefixIcon: const Icon(
+                                        Icons.password,
+                                        color: ColorResources.primary,
+                                      ),
                                       controller: _passwordController,
                                       focusNode: _passwordFocus,
                                       nextNode: _confirmPasswordFocus,
@@ -864,25 +878,19 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     left: Dimensions.marginSizeDefault,
                                     right: Dimensions.marginSizeDefault),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.lock_open,
-                                            color: ColorResources.getPrimary(
-                                                context),
-                                            size: 20),
-                                        const SizedBox(
-                                            width: Dimensions
-                                                .marginSizeExtraSmall),
-                                        Text(
-                                            getTranslated(
-                                                'RE_ENTER_PASSWORD', context)!,
-                                            style: titilliumRegular)
-                                      ],
-                                    ),
+                                    Text(
+                                        getTranslated(
+                                            'RE_ENTER_PASSWORD', context)!,
+                                        style: titilliumRegular),
                                     const SizedBox(
                                         height: Dimensions.marginSizeSmall),
                                     CustomPasswordTextField(
+                                      prefixIcon: const Icon(
+                                        Icons.password,
+                                        color: ColorResources.primary,
+                                      ),
                                       controller: _confirmPasswordController,
                                       focusNode: _confirmPasswordFocus,
                                       textInputAction: TextInputAction.done,
@@ -926,17 +934,23 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     Container(
                                       margin: const EdgeInsets.symmetric(
-                                          horizontal: Dimensions.marginSizeLarge,
+                                          horizontal:
+                                              Dimensions.marginSizeLarge,
                                           vertical: Dimensions.marginSizeSmall),
-                                      child: !Provider.of<ProfileProvider>(context).isLoading
+                                      child: !Provider.of<ProfileProvider>(
+                                                  context)
+                                              .isLoading
                                           ? CustomButton(
-                                          onTap: _updateUserAccount,
-                                          buttonText:
-                                          getTranslated('UPDATE_ACCOUNT', context))
+                                              onTap: _updateUserAccount,
+                                              buttonText: getTranslated(
+                                                  'UPDATE_ACCOUNT', context))
                                           : Center(
-                                          child: CircularProgressIndicator(
-                                              valueColor: AlwaysStoppedAnimation<Color>(
-                                                  Theme.of(context).primaryColor))),
+                                              child: CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                              Color>(
+                                                          Theme.of(context)
+                                                              .primaryColor))),
                                     ),
                                   ],
                                 ),
@@ -946,7 +960,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       margin: const EdgeInsets.symmetric(
                           horizontal: Dimensions.marginSizeLarge,
@@ -1528,7 +1544,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 //                                         children: [
 //                                           Icon(Icons.person,
 //                                               color: ColorResources
-//                                                   .getLightSkyBlue(context),
+//                                                   .primary,
 //                                               size: 20),
 //                                           const SizedBox(
 //                                               width: Dimensions
@@ -1560,7 +1576,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 //                                         children: [
 //                                           Icon(Icons.person,
 //                                               color: ColorResources
-//                                                   .getLightSkyBlue(context),
+//                                                   .primary,
 //                                               size: 20),
 //                                           const SizedBox(
 //                                               width: Dimensions
@@ -1753,8 +1769,8 @@ class ProfileScreenState extends State<ProfileScreen> {
 //                                   MaterialPageRoute(
 //                                     builder: (context) => PlacePicker(
 //                                       apiKey: Platform.isAndroid
-//                                           ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-//                                           : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
+//                                           ? ""
+//                                           : "",
 //                                       onPlacePicked: (result) {
 //                                         _addressController.text =
 //                                             result.formattedAddress ?? '';

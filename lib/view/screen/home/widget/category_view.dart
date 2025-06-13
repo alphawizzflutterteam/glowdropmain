@@ -16,7 +16,7 @@ class CategoryView extends StatelessWidget {
       builder: (context, categoryProvider, child) {
         return categoryProvider.categoryList.isNotEmpty
             ? SizedBox(
-                height: 100,
+                height: 110,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categoryProvider.categoryList.length,

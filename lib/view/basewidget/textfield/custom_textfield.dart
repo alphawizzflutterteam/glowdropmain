@@ -64,7 +64,7 @@ class CustomTextField extends StatelessWidget {
         border: isBorder
             ? Border.all(width: .8, color: Theme.of(context).hintColor)
             : null,
-        color: Theme.of(context).highlightColor,
+        color: Theme.of(context).cardColor,
         borderRadius: isPhoneNumber
             ? const BorderRadius.only(
                 topRight: Radius.circular(6), bottomRight: Radius.circular(6))

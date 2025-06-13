@@ -47,6 +47,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/recommended_
 import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/todys_special_view.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/top_restaurants_view.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/top_seller_view.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/jobs/job_details.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/product/view_all_product_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/search/search_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/topSeller/all_top_seller_screen.dart';
@@ -92,34 +93,34 @@ class _HomePageState extends State<HomePage> {
         .getUserInfo(Get.context!)
         .then((value) {
       address = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.address ??
+              .userInfoModel
+              ?.address ??
           '';
       lat = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.lat ??
+              .userInfoModel
+              ?.lat ??
           '';
       long = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.long ??
+              .userInfoModel
+              ?.long ??
           '';
       area = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.area ??
+              .userInfoModel
+              ?.area ??
           '';
       city = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.city ??
+              .userInfoModel
+              ?.city ??
           '';
       Provider.of<ProfileProvider>(Get.context!, listen: false)
           .setSelectCity(city ?? "");
       state = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.state ??
+              .userInfoModel
+              ?.state ??
           '';
       pincode = Provider.of<ProfileProvider>(Get.context!, listen: false)
-          .userInfoModel
-          ?.zipcode ??
+              .userInfoModel
+              ?.zipcode ??
           '';
       setState(() {});
     });
@@ -188,8 +189,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     singleVendor = Provider.of<SplashProvider>(context, listen: false)
-        .configModel!
-        .businessMode ==
+            .configModel!
+            .businessMode ==
         "single";
     Provider.of<FlashDealProvider>(context, listen: false)
         .getMegaDealList(true, true);
@@ -340,1618 +341,1695 @@ class _HomePageState extends State<HomePage> {
           // ),
           SafeArea(
               child: RefreshIndicator(
-                backgroundColor: Theme.of(context).highlightColor,
-                onRefresh: () async {
-                  await _loadData(true);
-                  await Provider.of<FlashDealProvider>(Get.context!, listen: false)
-                      .getMegaDealList(true, false);
-                },
-                child: CustomScrollView(
-                  controller: _scrollController,
-                  slivers: [
-                    // Transparent App Bar that allows content to show through
-                    // SliverAppBar(
-                    //   pinned: true,
-                    //   floating: false,
-                    //   snap: false,
-                    //   expandedHeight: 200.0,
-                    //   backgroundColor:
-                    //       Colors.red, // Changed from Colors.red
-                    //   elevation: 0,
-                    //   automaticallyImplyLeading: false,
-                    //   flexibleSpace: FlexibleSpaceBar(
-                    //     collapseMode: CollapseMode.parallax,
-                    //     background: Container(
-                    //       decoration: BoxDecoration(
-                    //         image: DecorationImage(
-                    //           image: AssetImage('assets/images/homeappbar.png'),
-                    //           fit: BoxFit.cover,
-                    //         ),
-                    //       )
-                    //     ), // Empty container instead of image
-                    //   ),
-                    //   title: Opacity(
-                    //     opacity: 1.0,
-                    //     child: Row(
-                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //       children: [
-                    //         InkWell(
-                    //           onTap: () => Navigator.push(
-                    //               context,
-                    //               MaterialPageRoute(
-                    //                   builder: (_) => const SearchScreen())),
-                    //           child: Icon(Icons.search, color: Colors.white),
-                    //         ),
-                    //         Image.asset(
-                    //           Images.homeLogoImage,
-                    //           height: 40,
-                    //         ),
-                    //         Row(
-                    //           children: [
-                    //             IconButton(
-                    //               icon: Icon(Icons.favorite_border,
-                    //                   color: Colors.white),
-                    //               onPressed: () => Navigator.push(
-                    //                   context,
-                    //                   MaterialPageRoute(
-                    //                       builder: (_) => const WishListScreen())),
-                    //             ),
-                    //             IconButton(
-                    //               icon: Icon(Icons.notifications_none,
-                    //                   color: Colors.white),
-                    //               onPressed: () => Navigator.push(
-                    //                   context,
-                    //                   MaterialPageRoute(
-                    //                       builder: (_) =>
-                    //                           const NotificationScreen())),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
+            backgroundColor: Theme.of(context).highlightColor,
+            onRefresh: () async {
+              await _loadData(true);
+              await Provider.of<FlashDealProvider>(Get.context!, listen: false)
+                  .getMegaDealList(true, false);
+            },
+            child: CustomScrollView(
+              controller: _scrollController,
+              slivers: [
+                // Transparent App Bar that allows content to show through
+                // SliverAppBar(
+                //   pinned: true,
+                //   floating: false,
+                //   snap: false,
+                //   expandedHeight: 200.0,
+                //   backgroundColor:
+                //       Colors.red, // Changed from Colors.red
+                //   elevation: 0,
+                //   automaticallyImplyLeading: false,
+                //   flexibleSpace: FlexibleSpaceBar(
+                //     collapseMode: CollapseMode.parallax,
+                //     background: Container(
+                //       decoration: BoxDecoration(
+                //         image: DecorationImage(
+                //           image: AssetImage('assets/images/homeappbar.png'),
+                //           fit: BoxFit.cover,
+                //         ),
+                //       )
+                //     ), // Empty container instead of image
+                //   ),
+                //   title: Opacity(
+                //     opacity: 1.0,
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //       children: [
+                //         InkWell(
+                //           onTap: () => Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                   builder: (_) => const SearchScreen())),
+                //           child: Icon(Icons.search, color: Colors.white),
+                //         ),
+                //         Image.asset(
+                //           Images.homeLogoImage,
+                //           height: 40,
+                //         ),
+                //         Row(
+                //           children: [
+                //             IconButton(
+                //               icon: Icon(Icons.favorite_border,
+                //                   color: Colors.white),
+                //               onPressed: () => Navigator.push(
+                //                   context,
+                //                   MaterialPageRoute(
+                //                       builder: (_) => const WishListScreen())),
+                //             ),
+                //             IconButton(
+                //               icon: Icon(Icons.notifications_none,
+                //                   color: Colors.white),
+                //               onPressed: () => Navigator.push(
+                //                   context,
+                //                   MaterialPageRoute(
+                //                       builder: (_) =>
+                //                           const NotificationScreen())),
+                //             ),
+                //           ],
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
 
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                            Dimensions.homePagePadding,
-                            Dimensions.homePagePadding,
-                            Dimensions.paddingSizeDefault,
-                            0),
-                        child: Column(
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                        Dimensions.homePagePadding,
+                        Dimensions.homePagePadding,
+                        Dimensions.paddingSizeDefault,
+                        0),
+                    child: Column(
+                      children: [
+                        const BannersView(),
+
+                        const SizedBox(
+                            height: Dimensions.paddingSizeExtraSmall),
+
+                        Column(
                           children: [
-                            const BannersView(),
-
-                            const SizedBox(
-                                height: Dimensions.paddingSizeExtraSmall),
-
-                            Column(
-                              children: [
-                                Container(
-                                  width:
+                            Container(
+                              width:
                                   MediaQuery.of(context).size.width * 90 / 100,
-                                  padding: const EdgeInsets.all(8),
-                                  child: Row(
-                                    children: [
-                                      // At Home Button
-                                      Expanded(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              isHomeSelected = true;
-                                            });
-                                          },
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                padding: const EdgeInsets.symmetric(
-                                                  vertical: 14,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: isHomeSelected
-                                                      ? ColorResources.secondryPrimaryColor
-                                                      : Colors.white,
-                                                  borderRadius:
-                                                  BorderRadius.circular(10),
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  "At Home",
-                                                  style: TextStyle(
-                                                    color: isHomeSelected
-                                                        ? Colors.white
-                                                        : Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                              ),
-                                              // Bottom Indicator
-                                              Container(
-                                                height: 4,
-                                                decoration: BoxDecoration(
-                                                  color: isHomeSelected
-                                                      ? ColorResources.secondryPrimaryColor
-
-                                                      : Colors.transparent,
-                                                  borderRadius:
-                                                  BorderRadius.circular(30),
-                                                ),
-                                                margin:
-                                                const EdgeInsets.only(top: 9),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-
-                                      const SizedBox(width: 10),
-
-                                      // At Salon Button
-                                      Expanded(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              isHomeSelected = false;
-                                            });
-                                          },
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                padding: const EdgeInsets.symmetric(
-                                                  vertical: 14,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: !isHomeSelected
-                                                      ? ColorResources.secondryPrimaryColor
-
-                                                      : Colors.white,
-                                                  borderRadius:
-                                                  BorderRadius.circular(10),
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  "At Salon",
-                                                  style: TextStyle(
-                                                    color: !isHomeSelected
-                                                        ? Colors.white
-                                                        : Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                              ),
-                                              // Bottom Indicator
-                                              Container(
-                                                height: 4,
-                                                margin:
-                                                const EdgeInsets.only(top: 9),
-                                                decoration: BoxDecoration(
-                                                  color: !isHomeSelected
-                                                      ? ColorResources.secondryPrimaryColor
-                                                      : Colors.transparent,
-                                                  borderRadius:
-                                                  BorderRadius.circular(30),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            // Category
-                            isHomeSelected
-                                ? Column(
-                              children: [
-
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: Dimensions
-                                          .paddingSizeExtraExtraSmall,
-                                      vertical: Dimensions
-                                          .paddingSizeExtraExtraSmall),
-                                  child: TitleRow(
-                                      title: 'Categories',
-                                      onTap: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  AllServiceCategoryScreen(
-                                                    fromWhere: true,
-                                                  )))),
-                                ),
-
-                                const SizedBox(
-                                    height: Dimensions.paddingSizeExtraSmall),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                const ServiceViewScreen(isHomePage: true),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: Dimensions
-                                          .paddingSizeExtraExtraSmall,
-                                      vertical: Dimensions
-                                          .paddingSizeExtraExtraSmall),
-                                  child: TitleRow(
-                                      title: 'Best Salon',
-                                      onTap: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  AllCategoryScreen(
-                                                    fromWhere: true,
-                                                  )))),
-                                ),
-
-                                const SizedBox(
-                                    height: Dimensions.paddingSizeExtraSmall),
-
-                                SizedBox(
-                                  height: 10,
-                                ),
-
-                                CategoryView(isHomePage: true),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                // Padding(
-                                //   padding: const EdgeInsets.symmetric(
-                                //       horizontal: Dimensions
-                                //           .paddingSizeExtraExtraSmall,
-                                //       vertical: Dimensions
-                                //           .paddingSizeExtraExtraSmall),
-                                //   child: TitleRow(
-                                //       title: 'Service Categories',
-                                //       onTap: () => Navigator.push(
-                                //           context,
-                                //           MaterialPageRoute(
-                                //               builder: (_) =>
-                                //                   AllServiceCategoryScreen(
-                                //                     fromWhere: true,
-                                //                   )))),
-                                // ),
-
-                                Container(
-                                  // height:  MediaQuery.of(context).size.height * 90 / 100,
-                                  width: MediaQuery.of(context).size.width *
-                                      90 /
-                                      100,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: Dimensions
-                                                .paddingSizeExtraExtraSmall,
-                                            vertical: Dimensions
-                                                .paddingSizeExtraExtraSmall),
-                                        child: TitleRow(
-                                            title: 'Service Categories',
-                                            onTap: () => Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        AllServiceCategoryScreen(
-                                                          fromWhere: true,
-                                                        )))),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                              padding: const EdgeInsets.all(8),
+                              child: Row(
+                                children: [
+                                  // At Home Button
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          isHomeSelected = true;
+                                        });
+                                      },
+                                      child: Column(
                                         children: [
-                                          // Padding(
-                                          //   padding: const EdgeInsets.symmetric(
-                                          //       horizontal: Dimensions
-                                          //           .paddingSizeExtraExtraSmall,
-                                          //       vertical: Dimensions
-                                          //           .paddingSizeExtraExtraSmall),
-                                          //   child: TitleRow(
-                                          //       title: 'Service Categories',
-                                          //       onTap: () => Navigator.push(
-                                          //           context,
-                                          //           MaterialPageRoute(
-                                          //               builder: (_) =>
-                                          //                   AllServiceCategoryScreen(
-                                          //                     fromWhere: true,
-                                          //                   )))),
-                                          // ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              if (showAllCategories) {
-                                                setState(() {
-                                                  showAllCategories = false;
-                                                });
-                                              } else {
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //     builder:
-                                                //         (context) => AllCategoriesPage(
-                                                //       categories: categories,
-                                                //     ),
-                                                //   ),
-                                                // );
-                                              }
-                                            },
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  showAllCategories
-                                                      ? "Hide"
-                                                      : "View all",
-                                                  style: TextStyle(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    fontSize: 17,
-                                                    fontFamily:
-                                                    "Bricolage Grotesque",
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 8),
-                                                Icon(
-                                                  showAllCategories
-                                                      ? Ionicons.chevron_up
-                                                      : Ionicons
-                                                      .chevron_forward,
-                                                  size: 18,
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
-                                                ),
-                                              ],
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 14,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: isHomeSelected
+                                                  ? ColorResources
+                                                      .secondryPrimaryColor
+                                                  : Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "At Home",
+                                              style: TextStyle(
+                                                color: isHomeSelected
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ),
+                                          // Bottom Indicator
+                                          Container(
+                                            height: 4,
+                                            decoration: BoxDecoration(
+                                              color: isHomeSelected
+                                                  ? ColorResources
+                                                      .secondryPrimaryColor
+                                                  : Colors.transparent,
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            margin:
+                                                const EdgeInsets.only(top: 9),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+                                  const SizedBox(width: 10),
+
+                                  // At Salon Button
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          isHomeSelected = false;
+                                        });
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 14,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: !isHomeSelected
+                                                  ? ColorResources
+                                                      .secondryPrimaryColor
+                                                  : Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "At Salon",
+                                              style: TextStyle(
+                                                color: !isHomeSelected
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ),
+                                          // Bottom Indicator
+                                          Container(
+                                            height: 4,
+                                            margin:
+                                                const EdgeInsets.only(top: 9),
+                                            decoration: BoxDecoration(
+                                              color: !isHomeSelected
+                                                  ? ColorResources
+                                                      .secondryPrimaryColor
+                                                  : Colors.transparent,
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
                                             ),
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 1),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
 
-                                      /// This handles both collapsed and expanded views
-                                      AnimatedContainer(
-                                        duration:
-                                        const Duration(milliseconds: 300),
-                                        // height: showAllCategories ? 300 : 130, // adjust height if needed
-                                        child: GridView.builder(
-                                          shrinkWrap:
-                                          true, // Important: allows GridView to size itself properly inside a Column
-                                          physics:
-                                          NeverScrollableScrollPhysics(), // Important: disables inner scroll so outer scroll takes over
-                                          // Disable inner scroll
-                                          padding: const EdgeInsets.all(10),
-                                          gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2,
-                                            crossAxisSpacing: 11,
-                                            mainAxisSpacing: 11,
-                                            childAspectRatio: 0.7,
-                                          ),
-                                          itemCount: 2,
+                        // Category
+                        isHomeSelected
+                            ? Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: Dimensions
+                                            .paddingSizeExtraExtraSmall,
+                                        vertical: Dimensions
+                                            .paddingSizeExtraExtraSmall),
+                                    child: TitleRow(
+                                        title: 'Categories',
+                                        onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    AllServiceCategoryScreen(
+                                                      fromWhere: true,
+                                                    )))),
+                                  ),
 
-                                          itemBuilder: (context, index) {
-                                            final category =
-                                            categories[index];
-                                            return Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  60 /
-                                                  100,
-                                              // height:
-                                              //     MediaQuery.of(context).size.height * 100 / 100,
-                                              color: Colors.white,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                  const SizedBox(
+                                      height: Dimensions.paddingSizeExtraSmall),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  const ServiceViewScreen(isHomePage: true),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: Dimensions
+                                            .paddingSizeExtraExtraSmall,
+                                        vertical: Dimensions
+                                            .paddingSizeExtraExtraSmall),
+                                    child: TitleRow(
+                                        title: 'Best Salon',
+                                        onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    AllCategoryScreen(
+                                                      fromWhere: true,
+                                                    )))),
+                                  ),
+
+                                  const SizedBox(
+                                      height: Dimensions.paddingSizeExtraSmall),
+
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+
+                                  CategoryView(isHomePage: true),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.symmetric(
+                                  //       horizontal: Dimensions
+                                  //           .paddingSizeExtraExtraSmall,
+                                  //       vertical: Dimensions
+                                  //           .paddingSizeExtraExtraSmall),
+                                  //   child: TitleRow(
+                                  //       title: 'Service Categories',
+                                  //       onTap: () => Navigator.push(
+                                  //           context,
+                                  //           MaterialPageRoute(
+                                  //               builder: (_) =>
+                                  //                   AllServiceCategoryScreen(
+                                  //                     fromWhere: true,
+                                  //                   )))),
+                                  // ),
+
+                                  Container(
+                                    // height:  MediaQuery.of(context).size.height * 90 / 100,
+                                    width: MediaQuery.of(context).size.width *
+                                        90 /
+                                        100,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: Dimensions
+                                                  .paddingSizeExtraExtraSmall,
+                                              vertical: Dimensions
+                                                  .paddingSizeExtraExtraSmall),
+                                          child: TitleRow(
+                                              title: 'Service Categories',
+                                              onTap: () => Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (_) =>
+                                                          AllServiceCategoryScreen(
+                                                            fromWhere: true,
+                                                          )))),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            // Padding(
+                                            //   padding: const EdgeInsets.symmetric(
+                                            //       horizontal: Dimensions
+                                            //           .paddingSizeExtraExtraSmall,
+                                            //       vertical: Dimensions
+                                            //           .paddingSizeExtraExtraSmall),
+                                            //   child: TitleRow(
+                                            //       title: 'Service Categories',
+                                            //       onTap: () => Navigator.push(
+                                            //           context,
+                                            //           MaterialPageRoute(
+                                            //               builder: (_) =>
+                                            //                   AllServiceCategoryScreen(
+                                            //                     fromWhere: true,
+                                            //                   )))),
+                                            // ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                if (showAllCategories) {
+                                                  setState(() {
+                                                    showAllCategories = false;
+                                                  });
+                                                } else {
+                                                  // Navigator.push(
+                                                  //   context,
+                                                  //   MaterialPageRoute(
+                                                  //     builder:
+                                                  //         (context) => AllCategoriesPage(
+                                                  //       categories: categories,
+                                                  //     ),
+                                                  //   ),
+                                                  // );
+                                                }
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  Expanded(
-                                                    child: Stack(
-                                                      children: [
-                                                        Container(
-                                                          // width: MediaQuery.of(context).size.width*90/100,
-                                                          decoration:
-                                                          BoxDecoration(
-                                                            image:
-                                                            DecorationImage(
-                                                              image:
-                                                              AssetImage(
-                                                                category[
-                                                                'image']!,
-                                                              ),
-                                                              fit: BoxFit
-                                                                  .cover,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          decoration:
-                                                          BoxDecoration(
-                                                            borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                                5),
-                                                            color: Theme.of(
-                                                                context)
-                                                                .highlightColor,
-                                                          ),
-                                                          child: Positioned(
-                                                            child: Text(
-                                                              "Beauty & Sense",
-                                                              style:
-                                                              TextStyle(
-                                                                fontSize: 15,
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Positioned(
-                                                          top: 125,
-                                                          left: 110,
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                            children: [
-                                                              Container(
-                                                                decoration:
+                                                  Text(
+                                                    showAllCategories
+                                                        ? "Hide"
+                                                        : "View all",
+                                                    style: TextStyle(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontSize: 17,
+                                                      fontFamily:
+                                                          "Bricolage Grotesque",
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 8),
+                                                  Icon(
+                                                    showAllCategories
+                                                        ? Ionicons.chevron_up
+                                                        : Ionicons
+                                                            .chevron_forward,
+                                                    size: 18,
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 1),
+
+                                        /// This handles both collapsed and expanded views
+                                        AnimatedContainer(
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          // height: showAllCategories ? 300 : 130, // adjust height if needed
+                                          child: GridView.builder(
+                                            shrinkWrap:
+                                                true, // Important: allows GridView to size itself properly inside a Column
+                                            physics:
+                                                NeverScrollableScrollPhysics(), // Important: disables inner scroll so outer scroll takes over
+                                            // Disable inner scroll
+                                            padding: const EdgeInsets.all(10),
+                                            gridDelegate:
+                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              crossAxisSpacing: 11,
+                                              mainAxisSpacing: 11,
+                                              childAspectRatio: 0.7,
+                                            ),
+                                            itemCount: 2,
+                                            itemBuilder: (context, index) {
+                                              final category =
+                                                  categories[index];
+                                              return Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    60 /
+                                                    100,
+                                                // height:
+                                                //     MediaQuery.of(context).size.height * 100 / 100,
+                                                color: Colors.white,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Stack(
+                                                        children: [
+                                                          Container(
+                                                            // width: MediaQuery.of(context).size.width*90/100,
+                                                            decoration:
                                                                 BoxDecoration(
-                                                                    borderRadius: BorderRadius
-                                                                        .circular(
-                                                                      1,
+                                                              image:
+                                                                  DecorationImage(
+                                                                image:
+                                                                    AssetImage(
+                                                                  category[
+                                                                      'image']!,
+                                                                ),
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .highlightColor,
+                                                            ),
+                                                            child: Positioned(
+                                                              child: Text(
+                                                                "Beauty & Sense",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 15,
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Positioned(
+                                                            top: 125,
+                                                            left: 110,
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                          borderRadius: BorderRadius
+                                                                              .circular(
+                                                                            1,
+                                                                          ),
+                                                                          color:
+                                                                              ColorResources.red),
+                                                                  child: Text(
+                                                                    "20% OFF",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          15,
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
-                                                                    color:
-                                                                    ColorResources.red),
-                                                                child: Text(
-                                                                  "20% OFF",
-                                                                  style:
-                                                                  TextStyle(
-                                                                    fontSize:
-                                                                    15,
-                                                                    color: Colors
-                                                                        .white,
                                                                   ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 4),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                        left: 5.0,
+                                                      ),
+                                                      child: Text(
+                                                        category['name']!,
+                                                        style: const TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                        // overflow: TextOverflow.ellipsis,
+                                                        maxLines: 1,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                        left: 5.0,
+                                                        right: 8,
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          // Padding(                    padding: const EdgeInsets.only( left: 5,right: 5),
+                                                          Text('200'),
+                                                          Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons.star,
+                                                                color: Colors
+                                                                    .orange,
+                                                                size: 14,
+                                                              ),
+                                                              Text(
+                                                                category[
+                                                                        'rating'] ??
+                                                                    '4.5', // fallback if null
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 12,
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 4),
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                      left: 5.0,
-                                                    ),
-                                                    child: Text(
-                                                      category['name']!,
-                                                      style: const TextStyle(
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                        FontWeight.w500,
+                                                        ],
                                                       ),
-                                                      // overflow: TextOverflow.ellipsis,
-                                                      maxLines: 1,
+                                                    ),
+                                                    SizedBox(height: 10),
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            ColorResources
+                                                                .secondryPrimaryColor,
+                                                        minimumSize: Size(
+                                                          160,
+                                                          30,
+                                                        ), // 👈 width: 120, height: 45
+
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  BookScreen()),
+                                                        );
+                                                      },
+                                                      child: Text(
+                                                        "Book",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 12,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: Dimensions
+                                                  .paddingSizeExtraExtraSmall,
+                                              vertical: Dimensions
+                                                  .paddingSizeExtraExtraSmall),
+                                          child: TitleRow(
+                                              title: 'Our Products',
+                                              onTap: () => Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (_) =>
+                                                          AllCategoryScreen(
+                                                            fromWhere: true,
+                                                          )))),
+                                        ),
+                                        CategoryView(isHomePage: true),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Column(
+                                children: [
+                                  Consumer<ProductProvider>(
+                                      builder: (context, featured, _) {
+                                    return featured
+                                            .featuredProductList.isNotEmpty
+                                        ? Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: Dimensions
+                                                    .paddingSizeExtraSmall,
+                                                vertical: Dimensions
+                                                    .paddingSizeExtraExtraSmall),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: Dimensions
+                                                      .paddingSizeSmall),
+                                              child: TitleRow(
+                                                  title: getTranslated(
+                                                      'featured_products',
+                                                      context),
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (_) =>
+                                                                AllProductScreen(
+                                                                    productType:
+                                                                        ProductType
+                                                                            .featuredProduct)));
+                                                  }),
+                                            ),
+                                          )
+                                        : const SizedBox();
+                                  }),
+
+                                  // SizedBox(
+                                  //   height: 20,
+                                  // ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.symmetric(
+                                  //       horizontal: Dimensions
+                                  //           .paddingSizeExtraExtraSmall,
+                                  //       vertical: Dimensions
+                                  //           .paddingSizeExtraExtraSmall),
+                                  //   child: TitleRow(
+                                  //       title: 'Our Products',
+                                  //       onTap: () => Navigator.push(
+                                  //           context,
+                                  //           MaterialPageRoute(
+                                  //               builder: (_) =>
+                                  //                   AllCategoryScreen(
+                                  //                     fromWhere: true,
+                                  //                   )))),
+                                  // ),
+
+                                  const SizedBox(
+                                      height: Dimensions.paddingSizeExtraSmall),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: Dimensions
+                                            .paddingSizeExtraExtraSmall,
+                                        vertical: Dimensions
+                                            .paddingSizeExtraExtraSmall),
+                                    child: TitleRow(
+                                        title: 'Service Categories',
+                                        onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    AllServiceCategoryScreen(
+                                                      fromWhere: true,
+                                                    )))),
+                                  ),
+
+                                  const SizedBox(
+                                      height: Dimensions.paddingSizeExtraSmall),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  const ServiceViewScreen(isHomePage: true),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: Dimensions
+                                            .paddingSizeExtraExtraSmall,
+                                        vertical: Dimensions
+                                            .paddingSizeExtraExtraSmall),
+                                    child: TitleRow(
+                                        title: 'Best Salon',
+                                        onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    AllCategoryScreen(
+                                                      fromWhere: true,
+                                                    )))),
+                                  ),
+
+                                  const SizedBox(
+                                      height: Dimensions.paddingSizeExtraSmall),
+                                  CategoryView(isHomePage: true),
+
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+
+                                  // CategoryView(isHomePage: true),
+                                  Container(
+                                    // height:  MediaQuery.of(context).size.height * 90 / 100,
+                                    width: MediaQuery.of(context).size.width *
+                                        90 /
+                                        100,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text(
+                                                "Popular Salons",
+                                                style: TextStyle(
+                                                  color: ColorResources
+                                                      .textPrimary,
+                                                  fontSize: 17,
+                                                  fontFamily:
+                                                      "Bricolage Grotesque",
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                if (showAllCategories) {
+                                                  setState(() {
+                                                    showAllCategories = false;
+                                                  });
+                                                } else {
+                                                  // Navigator.push(
+                                                  //   context,
+                                                  //   MaterialPageRoute(
+                                                  //     builder:
+                                                  //         (context) => AllCategoriesPage(
+                                                  //       categories: categories,
+                                                  //     ),
+                                                  //   ),
+                                                  // );
+                                                }
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    showAllCategories
+                                                        ? "Hide"
+                                                        : "View all",
+                                                    style: TextStyle(
+                                                      color: ColorResources
+                                                          .primary,
+                                                      fontSize: 17,
+                                                      fontFamily:
+                                                          "Bricolage Grotesque",
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                      left: 5.0,
-                                                      right: 8,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                      children: [
-                                                        // Padding(                    padding: const EdgeInsets.only( left: 5,right: 5),
-                                                        Text('200'),
-                                                        Row(
-                                                          children: [
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Colors
-                                                                  .orange,
-                                                              size: 14,
+                                                  const SizedBox(width: 8),
+                                                  Icon(
+                                                    showAllCategories
+                                                        ? Ionicons.chevron_up
+                                                        : Ionicons
+                                                            .chevron_forward,
+                                                    size: 18,
+                                                    color:
+                                                        ColorResources.primary,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 1),
+
+                                        /// This handles both collapsed and expanded views
+                                        AnimatedContainer(
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          // height: showAllCategories ? 300 : 130, // adjust height if needed
+                                          child: GridView.builder(
+                                            shrinkWrap:
+                                                true, // Important: allows GridView to size itself properly inside a Column
+                                            physics:
+                                                NeverScrollableScrollPhysics(), // Important: disables inner scroll so outer scroll takes over
+                                            // Disable inner scroll
+                                            padding: const EdgeInsets.all(10),
+                                            gridDelegate:
+                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              crossAxisSpacing: 11,
+                                              mainAxisSpacing: 11,
+                                              childAspectRatio: 0.7,
+                                            ),
+                                            itemCount: 2,
+                                            itemBuilder: (context, index) {
+                                              final category =
+                                                  categories[index];
+                                              return Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    60 /
+                                                    100,
+                                                // height:
+                                                //     MediaQuery.of(context).size.height * 100 / 100,
+                                                color: Colors.white,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Stack(
+                                                        children: [
+                                                          Container(
+                                                            // width: MediaQuery.of(context).size.width*90/100,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              image:
+                                                                  DecorationImage(
+                                                                image:
+                                                                    AssetImage(
+                                                                  category[
+                                                                      'image']!,
+                                                                ),
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
                                                             ),
-                                                            Text(
-                                                              category[
-                                                              'rating'] ??
-                                                                  '4.5', // fallback if null
+                                                          ),
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              color:
+                                                                  ColorResources
+                                                                      .pc,
+                                                            ),
+                                                            child: Positioned(
+                                                              child: Text(
+                                                                "Open",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 15,
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 4),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                        left: 5.0,
+                                                      ),
+                                                      child: Text(
+                                                        category['name']!,
+                                                        style: const TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                        // overflow: TextOverflow.ellipsis,
+                                                        maxLines: 1,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                        left: 5.0,
+                                                        right: 0,
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          // Padding(                    padding: const EdgeInsets.only( left: 5,right: 5),
+                                                          SizedBox(
+                                                              width: 140,
+                                                              child: Text(
+                                                                'Mon - Sat | 11:00 AM - 08:PM',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        8),
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                              )),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(height: 10),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10.0,
+                                                              right: 5),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          ElevatedButton(
+                                                            style:
+                                                                ElevatedButton
+                                                                    .styleFrom(
+                                                              backgroundColor:
+                                                                  Colors.blue,
+                                                              minimumSize:
+                                                                  Size(100, 30),
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
+                                                              ),
+                                                            ),
+                                                            onPressed: () {
+                                                              // Navigator.push(
+                                                              //   context,
+                                                              //   MaterialPageRoute(builder: (context) => BookScreen()),
+                                                              // );
+                                                            },
+                                                            child: Text(
+                                                              "Book",
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                               style:
-                                                              TextStyle(
+                                                                  const TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
                                                                 fontSize: 12,
                                                               ),
                                                             ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(height: 10),
-                                                  ElevatedButton(
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      backgroundColor:
-                                                      ColorResources
-                                                          .secondryPrimaryColor,
-                                                      minimumSize: Size(
-                                                        160,
-                                                        30,
-                                                      ), // 👈 width: 120, height: 45
-
-                                                      shape:
-                                                      RoundedRectangleBorder(
-                                                        borderRadius:
-                                                        BorderRadius
-                                                            .circular(10),
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons.star,
+                                                                color: Colors
+                                                                    .orange,
+                                                                size: 14,
+                                                              ),
+                                                              Text(
+                                                                category[
+                                                                        'rating'] ??
+                                                                    '4.5', // fallback if null
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 12,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
-                                                    onPressed: () {
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(builder: (context) => BookScreen()),
-                                                      );
-                                                    },
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                        Container(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 20),
+
+                              // Text before boxes
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Welcome, Esha',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "Poppins",
+                                      ),
+                                    ),
+                                    Text(
+                                      'Best Job You Need!',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              SizedBox(height: 12),
+
+                              // Scrollable row of boxes
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: List.generate(10, (index) {
+                                    final color = index % 2 == 0
+                                        ? ColorResources.greencl
+                                        : ColorResources.pinkcl;
+                                    return InkWell(
+                                      onTap: () => {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) => JobDetails()))
+                                      },
+                                      child: Container(
+                                        width: 180,
+                                        height: 120,
+                                        margin: EdgeInsets.only(
+                                          left: index == 0 ? 16 : 8,
+                                          right: index == 9 ? 16 : 0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                      8.0,
+                                                    ),
+                                                    child: Image.asset(
+                                                      'assets/images/Frame 1000001477.png', // Replace with your image pat
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+
+                                                  // SizedBox(height: 8),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 8.0,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      left: 8.0,
+                                                    ),
                                                     child: Text(
-                                                      "Book",
-                                                      textAlign:
-                                                      TextAlign.center,
-                                                      style: const TextStyle(
-                                                        color: Colors.white,
+                                                      'Makeup Specialist', // Replace with your image path
+                                                      style: TextStyle(
+                                                        fontSize: 17,
                                                         fontWeight:
-                                                        FontWeight.bold,
-                                                        fontSize: 12,
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: Dimensions
-                                                .paddingSizeExtraExtraSmall,
-                                            vertical: Dimensions
-                                                .paddingSizeExtraExtraSmall),
-                                        child: TitleRow(
-                                            title: 'Our Products',
-                                            onTap: () => Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        AllCategoryScreen(
-                                                          fromWhere: true,
-                                                        )))),
-
-                                      ),
-                                      CategoryView(isHomePage: true),
-
-
-
-                                    ],
-                                  ),
-                                ),
-
-                              ],
-                            )
-                                :
-                            Column(
-                              children: [
-                                Consumer<ProductProvider>(
-                                    builder: (context, featured, _) {
-                                      return featured.featuredProductList.isNotEmpty
-                                          ? Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal:
-                                            Dimensions.paddingSizeExtraSmall,
-                                            vertical: Dimensions
-                                                .paddingSizeExtraExtraSmall),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: Dimensions.paddingSizeSmall),
-                                          child: TitleRow(
-                                              title: getTranslated(
-                                                  'featured_products', context),
-                                              onTap: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (_) => AllProductScreen(
-                                                            productType: ProductType
-                                                                .featuredProduct)));
-                                              }),
-                                        ),
-                                      )
-                                          : const SizedBox();
-                                    }),
-
-                                // SizedBox(
-                                //   height: 20,
-                                // ),
-                                // Padding(
-                                //   padding: const EdgeInsets.symmetric(
-                                //       horizontal: Dimensions
-                                //           .paddingSizeExtraExtraSmall,
-                                //       vertical: Dimensions
-                                //           .paddingSizeExtraExtraSmall),
-                                //   child: TitleRow(
-                                //       title: 'Our Products',
-                                //       onTap: () => Navigator.push(
-                                //           context,
-                                //           MaterialPageRoute(
-                                //               builder: (_) =>
-                                //                   AllCategoryScreen(
-                                //                     fromWhere: true,
-                                //                   )))),
-                                // ),
-
-                                const SizedBox(
-                                    height: Dimensions.paddingSizeExtraSmall),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: Dimensions
-                                          .paddingSizeExtraExtraSmall,
-                                      vertical: Dimensions
-                                          .paddingSizeExtraExtraSmall),
-                                  child: TitleRow(
-                                      title: 'Service Categories',
-                                      onTap: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  AllServiceCategoryScreen(
-                                                    fromWhere: true,
-                                                  )))),
-                                ),
-
-                                const SizedBox(
-                                    height: Dimensions.paddingSizeExtraSmall),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                const ServiceViewScreen(isHomePage: true),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: Dimensions
-                                          .paddingSizeExtraExtraSmall,
-                                      vertical: Dimensions
-                                          .paddingSizeExtraExtraSmall),
-                                  child: TitleRow(
-                                      title: 'Best Salon',
-                                      onTap: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  AllCategoryScreen(
-                                                    fromWhere: true,
-                                                  )))),
-                                ),
-
-                                const SizedBox(
-                                    height: Dimensions.paddingSizeExtraSmall),
-                                CategoryView(isHomePage: true),
-
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-
-                                // CategoryView(isHomePage: true),
-                                Container(
-                                  // height:  MediaQuery.of(context).size.height * 90 / 100,
-                                  width: MediaQuery.of(context).size.width * 90 / 100,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 8.0),
-                                            child: Text(
-                                              "Popular Salons",
-                                              style: TextStyle(
-                                                color: ColorResources.textPrimary,
-                                                fontSize: 17,
-                                                fontFamily: "Bricolage Grotesque",
-                                                fontWeight: FontWeight.bold,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 8.0,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      left: 8.0,
+                                                    ),
+                                                    child: Text(
+                                                      'Indore - Full Time', // Replace with your image path
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 8),
+                                                ],
                                               ),
                                             ),
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              if (showAllCategories) {
-                                                setState(() {
-                                                  showAllCategories = false;
-                                                });
-                                              } else {
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //     builder:
-                                                //         (context) => AllCategoriesPage(
-                                                //       categories: categories,
-                                                //     ),
-                                                //   ),
-                                                // );
-                                              }
-                                            },
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              ),
+
+                              SizedBox(height: 20),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 20),
+
+                              // Text before boxes
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Welcome, Esha',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "Poppins",
+                                      ),
+                                    ),
+                                    Text(
+                                      'Best Training You Need!',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              SizedBox(height: 12),
+
+                              // Scrollable row of boxes
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: List.generate(10, (index) {
+                                    final color = index % 2 == 0
+                                        ? ColorResources.greencl
+                                        : ColorResources.pinkcl;
+                                    return Container(
+                                      width: 180,
+                                      height: 120,
+                                      margin: EdgeInsets.only(
+                                        left: index == 0 ? 16 : 8,
+                                        right: index == 9 ? 16 : 0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: color,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Row(
-                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  showAllCategories ? "Hide" : "View all",
-                                                  style: TextStyle(
-                                                    color: ColorResources.primary,
-                                                    fontSize: 17,
-                                                    fontFamily: "Bricolage Grotesque",
+                                                Padding(
+                                                  padding: const EdgeInsets.all(
+                                                    8.0,
+                                                  ),
+                                                  child: Image.asset(
+                                                    'assets/images/Frame 1000001477.png', // Replace with your image pat
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                                const SizedBox(width: 8),
-                                                Icon(
-                                                  showAllCategories
-                                                      ? Ionicons.chevron_up
-                                                      : Ionicons.chevron_forward,
-                                                  size: 18,
-                                                  color: ColorResources.primary,
+
+                                                // SizedBox(height: 8),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 8.0,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8.0,
+                                                  ),
+                                                  child: Text(
+                                                    'Makeup Specialist', // Replace with your image path
+                                                    style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
                                                 ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 8.0,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    left: 8.0,
+                                                  ),
+                                                  child: Text(
+                                                    'Indore - Full Time', // Replace with your image path
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(height: 8),
                                               ],
                                             ),
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 1),
-
-                                      /// This handles both collapsed and expanded views
-                                      AnimatedContainer(
-                                        duration: const Duration(milliseconds: 300),
-                                        // height: showAllCategories ? 300 : 130, // adjust height if needed
-                                        child: GridView.builder(
-                                          shrinkWrap:
-                                          true, // Important: allows GridView to size itself properly inside a Column
-                                          physics:
-                                          NeverScrollableScrollPhysics(), // Important: disables inner scroll so outer scroll takes over
-                                          // Disable inner scroll
-                                          padding: const EdgeInsets.all(10),
-                                          gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2,
-                                            crossAxisSpacing: 11,
-                                            mainAxisSpacing: 11,
-                                            childAspectRatio: 0.7,
-                                          ),
-                                          itemCount: 2,
-                                          itemBuilder: (context, index) {
-                                            final category = categories[index];
-                                            return Container(
-                                              width:
-                                              MediaQuery.of(context).size.width *
-                                                  60 /
-                                                  100,
-                                              // height:
-                                              //     MediaQuery.of(context).size.height * 100 / 100,
-                                              color: Colors.white,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                                children: [
-                                                  Expanded(
-                                                    child: Stack(
-                                                      children: [
-                                                        Container(
-                                                          // width: MediaQuery.of(context).size.width*90/100,
-                                                          decoration: BoxDecoration(
-                                                            image: DecorationImage(
-                                                              image: AssetImage(
-                                                                category['image']!,
-                                                              ),
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius:
-                                                            BorderRadius.circular(5),
-                                                            color: ColorResources.pc,
-                                                          ),
-                                                          child: Positioned(
-                                                            child: Text(
-                                                              "Open",
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                color: Colors.white,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 4),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(
-                                                      left: 5.0,
-                                                    ),
-                                                    child: Text(
-                                                      category['name']!,
-                                                      style: const TextStyle(
-                                                        fontSize: 12,
-                                                        fontWeight: FontWeight.w500,
-                                                      ),
-                                                      // overflow: TextOverflow.ellipsis,
-                                                      maxLines: 1,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(
-                                                      left: 5.0,
-                                                      right: 0,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        // Padding(                    padding: const EdgeInsets.only( left: 5,right: 5),
-                                                        SizedBox(
-                                                            width:140,
-                                                            child: Text('Mon - Sat | 11:00 AM - 08:PM',style: TextStyle(fontSize: 8),maxLines: 1,overflow: TextOverflow.ellipsis,)),
-
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(height: 10),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(left:10.0,right: 5),
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                                      children: [
-                                                        ElevatedButton(
-                                                          style: ElevatedButton.styleFrom(
-                                                            backgroundColor: Colors.blue,
-                                                            minimumSize: Size(100, 30),
-                                                            shape: RoundedRectangleBorder(
-                                                              borderRadius: BorderRadius.circular(10),
-                                                            ),
-                                                          ),
-                                                          onPressed: () {
-                                                            // Navigator.push(
-                                                            //   context,
-                                                            //   MaterialPageRoute(builder: (context) => BookScreen()),
-                                                            // );
-                                                          },
-                                                          child: Text(
-                                                            "Book",
-                                                            textAlign: TextAlign.center,
-                                                            style: const TextStyle(
-                                                              color: Colors.white,
-                                                              fontWeight: FontWeight.bold,
-                                                              fontSize: 12,
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        Row(
-                                                          children: [
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Colors.orange,
-                                                              size: 14,
-                                                            ),
-                                                            Text(
-                                                              category['rating'] ??
-                                                                  '4.5', // fallback if null
-                                                              style: TextStyle(
-                                                                fontSize: 12,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    );
+                                  }),
                                 ),
-
-                              ],
-                            ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(height: 20),
-
-                                  // Text before boxes
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          'Welcome, Esha',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: "Poppins",
-                                          ),
-                                        ),
-                                        Text(
-                                          'Best Job You Need!',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 12),
-
-                                  // Scrollable row of boxes
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: List.generate(10, (index) {
-                                        final color =
-                                        index % 2 == 0
-                                            ? ColorResources.greencl
-                                            : ColorResources.pinkcl;
-                                        return Container(
-                                          width: 180,
-                                          height: 120,
-                                          margin: EdgeInsets.only(
-                                            left: index == 0 ? 16 : 8,
-                                            right: index == 9 ? 16 : 0,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: color,
-                                            borderRadius: BorderRadius.circular(12),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.all(
-                                                        8.0,
-                                                      ),
-                                                      child: Image.asset(
-                                                        'assets/images/Frame 1000001477.png', // Replace with your image pat
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-
-                                                    // SizedBox(height: 8),
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: 8.0,
-                                                      ),
-                                                      child: Text(
-                                                        'Makeup Specialist', // Replace with your image path
-                                                        style: TextStyle(
-                                                          fontSize: 17,
-                                                          fontWeight: FontWeight.w500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: 8.0,
-                                                      ),
-                                                      child: Text(
-                                                        'Indore - Full Time', // Replace with your image path
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight: FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 8),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }),
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 20),
-                                ],
                               ),
-                            ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(height: 20),
 
-                                  // Text before boxes
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          'Welcome, Esha',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: "Poppins",
-                                          ),
-                                        ),
-                                        Text(
-                                          'Best Training You Need!',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 12),
-
-                                  // Scrollable row of boxes
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: List.generate(10, (index) {
-                                        final color =
-                                        index % 2 == 0
-                                            ? ColorResources.greencl
-                                            : ColorResources.pinkcl;
-                                        return Container(
-                                          width: 180,
-                                          height: 120,
-                                          margin: EdgeInsets.only(
-                                            left: index == 0 ? 16 : 8,
-                                            right: index == 9 ? 16 : 0,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: color,
-                                            borderRadius: BorderRadius.circular(12),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.all(
-                                                        8.0,
-                                                      ),
-                                                      child: Image.asset(
-                                                        'assets/images/Frame 1000001477.png', // Replace with your image pat
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-
-                                                    // SizedBox(height: 8),
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: 8.0,
-                                                      ),
-                                                      child: Text(
-                                                        'Makeup Specialist', // Replace with your image path
-                                                        style: TextStyle(
-                                                          fontSize: 17,
-                                                          fontWeight: FontWeight.w500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 8.0,
-                                                ),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: 8.0,
-                                                      ),
-                                                      child: Text(
-                                                        'Indore - Full Time', // Replace with your image path
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight: FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 8),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }),
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 20),
-                                ],
-                              ),
-                            ),
-
-                            //Today's Special
-                            // Padding(
-                            //   padding: const EdgeInsets.symmetric(
-                            //       horizontal:
-                            //           Dimensions.paddingSizeExtraExtraSmall,
-                            //       vertical: 0),
-                            //   child: TitleRow(
-                            //     title: getTranslated("Today's Special", context),
-                            //     // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AllCategoryScreen()))
-                            //   ),
-                            // ),
-                            // const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                            // const Padding(
-                            //   padding: EdgeInsets.only(
-                            //       bottom: Dimensions.paddingSizeExtraSmall,
-                            //       top: Dimensions.paddingSizeExtraSmall),
-                            //   child: TodaysSpecialView(),
-                            // ),
-
-                            // Padding(
-                            //   padding: const EdgeInsets.symmetric(
-                            //       horizontal:
-                            //           Dimensions.paddingSizeExtraExtraSmall,
-                            //       vertical: Dimensions.paddingSizeExtraSmall),
-                            //   child: TitleRow(
-                            //     title: getTranslated(
-                            //         'Top Rated Restaurants', context),
-                            //     // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AllCategoryScreen()))
-                            //   ),
-                            // ),
-                            //   const SizedBox(height: Dimensions.paddingSizeSmall),
-                            // const Padding(
-                            //   padding: EdgeInsets.only(
-                            //       bottom: Dimensions.homePagePadding),
-                            //   child: TopRestaurantsView(isHomePage: true),
-                            // ),
-                            // Mega Deal
-                            // Consumer<FlashDealProvider>(
-                            //     builder: (context, flashDeal, child) {
-                            //       return (flashDeal.flashDeal != null &&
-                            //               flashDeal.flashDealList.isNotEmpty)
-                            //           ? TitleRow(
-                            //               title: getTranslated(
-                            //                   'flash_deal', context),
-                            //               eventDuration:
-                            //                   flashDeal.flashDeal != null
-                            //                       ? flashDeal.duration
-                            //                       : null,
-                            //               onTap: () {
-                            //                 Navigator.push(
-                            //                     context,
-                            //                     MaterialPageRoute(
-                            //                         builder: (_) =>
-                            //                             const FlashDealScreen()));
-                            //               },
-                            //               isFlash: true,
-                            //             )
-                            //           : const SizedBox.shrink();
-                            //     },
-                            //   ),
-
-                            // const SizedBox(height: Dimensions.paddingSizeSmall),
-                            // Consumer<FlashDealProvider>(
-                            //   builder: (context, megaDeal, child) {
-                            //     return (megaDeal.flashDeal != null &&
-                            //             megaDeal.flashDealList.isNotEmpty)
-                            //         ? SizedBox(
-                            //             height:
-                            //                 MediaQuery.of(context).size.width * .77,
-                            //             child: const Padding(
-                            //               padding: EdgeInsets.only(
-                            //                   bottom: Dimensions.homePagePadding),
-                            //               child: FlashDealsView(),
-                            //             ))
-                            //         : const SizedBox.shrink();
-                            //   },
-                            // ),
-
-                            // Brand
-                            // Provider.of<SplashProvider>(context, listen: false)
-                            //             .configModel!
-                            //             .brandSetting ==
-                            //         "1"
-                            //     ? Padding(
-                            //         padding: const EdgeInsets.only(
-                            //             left: Dimensions.paddingSizeExtraSmall,
-                            //             right: Dimensions.paddingSizeExtraSmall,
-                            //             bottom: Dimensions.paddingSizeExtraSmall),
-                            //         child: TitleRow(
-                            //             title: getTranslated('brand', context),
-                            //             onTap: () {
-                            //               Navigator.push(
-                            //                   context,
-                            //                   MaterialPageRoute(
-                            //                       builder: (_) =>
-                            //                           const AllBrandScreen()));
-                            //             }),
-                            //       )
-                            //     : const SizedBox(),
-                            // SizedBox(
-                            //     height: Provider.of<SplashProvider>(context,
-                            //                     listen: false)
-                            //                 .configModel!
-                            //                 .brandSetting ==
-                            //             "1"
-                            //         ? Dimensions.paddingSizeSmall
-                            //         : 0),
-                            // Provider.of<SplashProvider>(context, listen: false)
-                            //             .configModel!
-                            //             .brandSetting ==
-                            //         "1"
-                            //     ? const BrandView(isHomePage: true)
-                            //     : const SizedBox(),
-
-                            //top seller
-
-                            //
-                            // singleVendor
-                            //     ? const SizedBox()
-                            //     : TitleRow(
-                            //         title: getTranslated('popular_services', context),
-                            //         onTap: () {
-                            //           Navigator.push(
-                            //               context,
-                            //               MaterialPageRoute(
-                            //                   builder: (_) =>
-                            //                       const AllTopSellerScreen(
-                            //                         topSeller: null,
-                            //                       )));
-                            //         },
-                            //       ),
-                            // singleVendor
-                            //     ? const SizedBox(height: 0)
-                            //     : const SizedBox(
-                            //         height: Dimensions.paddingSizeSmall),
-                            // singleVendor
-                            //     ? const SizedBox()
-                            //     : const Padding(
-                            //         padding: EdgeInsets.only(
-                            //             bottom: Dimensions.homePagePadding),
-                            //         child: TopSellerView(isHomePage: true),
-                            //       ),
-                            // singleVendor
-                            //                            ? const SizedBox()
-                            //                            : TitleRow(
-                            //                                title: getTranslated('popular_services', context),
-                            //                                onTap: () {
-                            //                                  Navigator.push(
-                            //                                      context,
-                            //                                      MaterialPageRoute(
-                            //                                          builder: (_) =>
-                            //                                              const AllTopSellerScreen(
-                            //                                                topSeller: null,
-                            //                                              )));
-                            //                                },
-                            //                              ),
-                            //                        singleVendor
-                            //                            ? const SizedBox(height: 0)
-                            //                            : const SizedBox(
-                            //                                height: Dimensions.paddingSizeSmall),
-                            //                        singleVendor
-                            //                            ? const SizedBox()
-                            //                            : const Padding(
-                            //                                padding: EdgeInsets.only(
-                            //                                    bottom: Dimensions.homePagePadding),
-                            //                                child: TopSellerView(isHomePage: true),
-                            //                              ),
-
-                            //footer banner
-                            // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
-                            //   return footerBannerProvider.footerBannerList != null && footerBannerProvider.footerBannerList!.isNotEmpty?
-                            //   const Padding(
-                            //     padding: EdgeInsets.only(bottom: Dimensions.homePagePadding),
-                            //     child: FooterBannersView(index: 0,),
-                            //   ):const SizedBox();
-                            // }),
-                            //
-
-                            // Featured Products
-
-                            //
-                            // Padding(
-                            //   padding: const EdgeInsets.only(
-                            //       bottom: Dimensions.homePagePadding),
-                            //   child: FeaturedProductView(
-                            //     scrollController: _scrollController,
-                            //     isHome: true,
-                            //   ),
-                            // ),
-
-                            // Featured Deal
-
-                            // Consumer<FeaturedDealProvider>(
-                            //   builder: (context, featuredDealProvider, child) {
-                            //     return  featuredDealProvider.featuredDealProductList.isNotEmpty ?
-                            //     Padding(padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
-                            //       child: TitleRow(title: getTranslated('featured_deals', context),
-                            //           onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => const FeaturedDealScreen()));}),
-                            //     ) : const SizedBox.shrink();},),
-                            //
-                            // Consumer<FeaturedDealProvider>(
-                            //   builder: (context, featuredDealProvider, child) {
-                            //     return  featuredDealProvider.featuredDealProductList.isNotEmpty ?
-                            //    SizedBox(height: featuredDealProvider.featuredDealProductList.length> 4 ? 120 * 4.0 : 120 * (double.parse(featuredDealProvider.featuredDealProductList.length.toString())),
-                            //         child: const Padding(
-                            //           padding: EdgeInsets.only(bottom: Dimensions.homePagePadding),
-                            //           child: FeaturedDealsView(),
-                            //         )) : const SizedBox.shrink();},),
-                            //
-                            //
-
-                            // const Padding(
-                            //   padding: EdgeInsets.only(
-                            //       bottom: Dimensions.homePagePadding),
-                            //   child: RecommendedProductView(),
-                            // ),
-
-                            //footer banner
-                            // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
-                            //   return footerBannerProvider.mainSectionBannerList != null &&
-                            //       footerBannerProvider.mainSectionBannerList!.isNotEmpty?
-                            //   const Padding(
-                            //     padding: EdgeInsets.only(bottom: Dimensions.homePagePadding),
-                            //     child: MainSectionBannersView(index: 0,),
-                            //   ):const SizedBox();
-                            //
-                            // }),
-                            //
-
-                            // Latest Products
-
-                            // Padding(
-                            //   padding: const EdgeInsets.symmetric(horizontal: 7,vertical: Dimensions.paddingSizeExtraSmall),
-                            //   child: TitleRow(title: getTranslated('latest_products', context),
-                            //       onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => AllProductScreen(
-                            //           productType: ProductType.latestProduct)));}),
-                            // ),
-                            // const SizedBox(height: Dimensions.paddingSizeSmall),
-                            // LatestProductView(scrollController: _scrollController),
-                            // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                            //Home category
-                            // const HomeCategoryProductView(isHomePage: true),
-                            // const SizedBox(height: Dimensions.homePagePadding),
-
-                            //footer banner
-                            // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
-                            //   return footerBannerProvider.footerBannerList != null && footerBannerProvider.footerBannerList!.length>1?
-                            //   const FooterBannersView(index: 1):const SizedBox();
-                            // }),
-                            // const SizedBox(height: Dimensions.homePagePadding),
-
-                            //Category filter
-                            // Consumer<ProductProvider>(
-                            //     builder: (ctx, prodProvider, child) {
-                            //   return Padding(
-                            //     padding: const EdgeInsets.symmetric(
-                            //         horizontal: Dimensions.paddingSizeExtraSmall,
-                            //         vertical: Dimensions.paddingSizeExtraSmall),
-                            //     child: Row(children: [
-                            //       Expanded(
-                            //           child: Text(
-                            //               prodProvider.title == 'xyz'
-                            //                   ? getTranslated(
-                            //                       'new_arrival', context)!
-                            //                   : prodProvider.title!,
-                            //               style: titleHeader)),
-                            //       prodProvider.latestProductList != null
-                            //           ? PopupMenuButton(
-                            //               itemBuilder: (context) {
-                            //                 return [
-                            //                   PopupMenuItem(
-                            //                       value: ProductType.newArrival,
-                            //                       textStyle: robotoRegular.copyWith(
-                            //                         color:
-                            //                             Theme.of(context).hintColor,
-                            //                       ),
-                            //                       child: Text(getTranslated(
-                            //                           'new_arrival', context)!)),
-                            //                   PopupMenuItem(
-                            //                       value: ProductType.topProduct,
-                            //                       textStyle: robotoRegular.copyWith(
-                            //                         color:
-                            //                             Theme.of(context).hintColor,
-                            //                       ),
-                            //                       child: Text(getTranslated(
-                            //                           'top_product', context)!)),
-                            //                   PopupMenuItem(
-                            //                       value: ProductType.bestSelling,
-                            //                       textStyle: robotoRegular.copyWith(
-                            //                         color:
-                            //                             Theme.of(context).hintColor,
-                            //                       ),
-                            //                       child: Text(getTranslated(
-                            //                           'best_selling', context)!)),
-                            //                   PopupMenuItem(
-                            //                       value:
-                            //                           ProductType.discountedProduct,
-                            //                       textStyle: robotoRegular.copyWith(
-                            //                         color:
-                            //                             Theme.of(context).hintColor,
-                            //                       ),
-                            //                       child: Text(getTranslated(
-                            //                           'discounted_product',
-                            //                           context)!)),
-                            //                 ];
-                            //               },
-                            //               shape: RoundedRectangleBorder(
-                            //                   borderRadius: BorderRadius.circular(
-                            //                       Dimensions.paddingSizeSmall)),
-                            //               child: Padding(
-                            //                 padding: const EdgeInsets.symmetric(
-                            //                     horizontal:
-                            //                         Dimensions.paddingSizeSmall,
-                            //                     vertical:
-                            //                         Dimensions.paddingSizeSmall),
-                            //                 child: Image.asset(
-                            //                   Images.dropdown,
-                            //                   scale: 3,
-                            //                 ),
-                            //               ),
-                            //               onSelected: (dynamic value) {
-                            //                 if (value == ProductType.newArrival) {
-                            //                   Provider.of<ProductProvider>(context,
-                            //                           listen: false)
-                            //                       .changeTypeOfProduct(
-                            //                           value, types[0]);
-                            //                 } else if (value ==
-                            //                     ProductType.topProduct) {
-                            //                   Provider.of<ProductProvider>(context,
-                            //                           listen: false)
-                            //                       .changeTypeOfProduct(
-                            //                           value, types[1]);
-                            //                 } else if (value ==
-                            //                     ProductType.bestSelling) {
-                            //                   Provider.of<ProductProvider>(context,
-                            //                           listen: false)
-                            //                       .changeTypeOfProduct(
-                            //                           value, types[2]);
-                            //                 } else if (value ==
-                            //                     ProductType.discountedProduct) {
-                            //                   Provider.of<ProductProvider>(context,
-                            //                           listen: false)
-                            //                       .changeTypeOfProduct(
-                            //                           value, types[3]);
-                            //                 }
-                            //
-                            //                 ProductView(
-                            //                     isHomePage: false,
-                            //                     productType: value,
-                            //                     scrollController:
-                            //                         _scrollController);
-                            //                 Provider.of<ProductProvider>(context,
-                            //                         listen: false)
-                            //                     .getLatestProductList(1,
-                            //                         reload: true);
-                            //               })
-                            //           : const SizedBox(),
-                            //     ]),
-                            //   );
-                            // }),
-                            // ProductView(
-                            //     isHomePage: false,
-                            //     productType: ProductType.newArrival,
-                            //     scrollController: _scrollController),
-                            // const SizedBox(height: Dimensions.homePagePadding),
-                          ],
+                              SizedBox(height: 20),
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-                // Provider.of<SplashProvider>(context, listen: false)
-                //             .configModel!
-                //             .announcement!
-                //             .status ==
-                //         '1'
-                //     ? Positioned(
-                //         top: MediaQuery.of(context).size.height - 128,
-                //         left: 0,
-                //         right: 0,
-                //         child: Consumer<SplashProvider>(
-                //           builder: (context, announcement, _) {
-                //             return (announcement.configModel!.announcement!
-                //                             .announcement !=
-                //                         null &&
-                //                     announcement.onOff)
-                //                 ? AnnouncementScreen(
-                //                     announcement:
-                //                         announcement.configModel!.announcement)
-                //                 : const SizedBox();
-                //           },
-                //         ),
-                //       )
-                //     : const SizedBox(),
-              ))
+
+                        //Today's Special
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(
+                        //       horizontal:
+                        //           Dimensions.paddingSizeExtraExtraSmall,
+                        //       vertical: 0),
+                        //   child: TitleRow(
+                        //     title: getTranslated("Today's Special", context),
+                        //     // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AllCategoryScreen()))
+                        //   ),
+                        // ),
+                        // const SizedBox(height: Dimensions.paddingSizeSmall),
+
+                        // const Padding(
+                        //   padding: EdgeInsets.only(
+                        //       bottom: Dimensions.paddingSizeExtraSmall,
+                        //       top: Dimensions.paddingSizeExtraSmall),
+                        //   child: TodaysSpecialView(),
+                        // ),
+
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(
+                        //       horizontal:
+                        //           Dimensions.paddingSizeExtraExtraSmall,
+                        //       vertical: Dimensions.paddingSizeExtraSmall),
+                        //   child: TitleRow(
+                        //     title: getTranslated(
+                        //         'Top Rated Restaurants', context),
+                        //     // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AllCategoryScreen()))
+                        //   ),
+                        // ),
+                        //   const SizedBox(height: Dimensions.paddingSizeSmall),
+                        // const Padding(
+                        //   padding: EdgeInsets.only(
+                        //       bottom: Dimensions.homePagePadding),
+                        //   child: TopRestaurantsView(isHomePage: true),
+                        // ),
+                        // Mega Deal
+                        // Consumer<FlashDealProvider>(
+                        //     builder: (context, flashDeal, child) {
+                        //       return (flashDeal.flashDeal != null &&
+                        //               flashDeal.flashDealList.isNotEmpty)
+                        //           ? TitleRow(
+                        //               title: getTranslated(
+                        //                   'flash_deal', context),
+                        //               eventDuration:
+                        //                   flashDeal.flashDeal != null
+                        //                       ? flashDeal.duration
+                        //                       : null,
+                        //               onTap: () {
+                        //                 Navigator.push(
+                        //                     context,
+                        //                     MaterialPageRoute(
+                        //                         builder: (_) =>
+                        //                             const FlashDealScreen()));
+                        //               },
+                        //               isFlash: true,
+                        //             )
+                        //           : const SizedBox.shrink();
+                        //     },
+                        //   ),
+
+                        // const SizedBox(height: Dimensions.paddingSizeSmall),
+                        // Consumer<FlashDealProvider>(
+                        //   builder: (context, megaDeal, child) {
+                        //     return (megaDeal.flashDeal != null &&
+                        //             megaDeal.flashDealList.isNotEmpty)
+                        //         ? SizedBox(
+                        //             height:
+                        //                 MediaQuery.of(context).size.width * .77,
+                        //             child: const Padding(
+                        //               padding: EdgeInsets.only(
+                        //                   bottom: Dimensions.homePagePadding),
+                        //               child: FlashDealsView(),
+                        //             ))
+                        //         : const SizedBox.shrink();
+                        //   },
+                        // ),
+
+                        // Brand
+                        // Provider.of<SplashProvider>(context, listen: false)
+                        //             .configModel!
+                        //             .brandSetting ==
+                        //         "1"
+                        //     ? Padding(
+                        //         padding: const EdgeInsets.only(
+                        //             left: Dimensions.paddingSizeExtraSmall,
+                        //             right: Dimensions.paddingSizeExtraSmall,
+                        //             bottom: Dimensions.paddingSizeExtraSmall),
+                        //         child: TitleRow(
+                        //             title: getTranslated('brand', context),
+                        //             onTap: () {
+                        //               Navigator.push(
+                        //                   context,
+                        //                   MaterialPageRoute(
+                        //                       builder: (_) =>
+                        //                           const AllBrandScreen()));
+                        //             }),
+                        //       )
+                        //     : const SizedBox(),
+                        // SizedBox(
+                        //     height: Provider.of<SplashProvider>(context,
+                        //                     listen: false)
+                        //                 .configModel!
+                        //                 .brandSetting ==
+                        //             "1"
+                        //         ? Dimensions.paddingSizeSmall
+                        //         : 0),
+                        // Provider.of<SplashProvider>(context, listen: false)
+                        //             .configModel!
+                        //             .brandSetting ==
+                        //         "1"
+                        //     ? const BrandView(isHomePage: true)
+                        //     : const SizedBox(),
+
+                        //top seller
+
+                        //
+                        // singleVendor
+                        //     ? const SizedBox()
+                        //     : TitleRow(
+                        //         title: getTranslated('popular_services', context),
+                        //         onTap: () {
+                        //           Navigator.push(
+                        //               context,
+                        //               MaterialPageRoute(
+                        //                   builder: (_) =>
+                        //                       const AllTopSellerScreen(
+                        //                         topSeller: null,
+                        //                       )));
+                        //         },
+                        //       ),
+                        // singleVendor
+                        //     ? const SizedBox(height: 0)
+                        //     : const SizedBox(
+                        //         height: Dimensions.paddingSizeSmall),
+                        // singleVendor
+                        //     ? const SizedBox()
+                        //     : const Padding(
+                        //         padding: EdgeInsets.only(
+                        //             bottom: Dimensions.homePagePadding),
+                        //         child: TopSellerView(isHomePage: true),
+                        //       ),
+                        // singleVendor
+                        //                            ? const SizedBox()
+                        //                            : TitleRow(
+                        //                                title: getTranslated('popular_services', context),
+                        //                                onTap: () {
+                        //                                  Navigator.push(
+                        //                                      context,
+                        //                                      MaterialPageRoute(
+                        //                                          builder: (_) =>
+                        //                                              const AllTopSellerScreen(
+                        //                                                topSeller: null,
+                        //                                              )));
+                        //                                },
+                        //                              ),
+                        //                        singleVendor
+                        //                            ? const SizedBox(height: 0)
+                        //                            : const SizedBox(
+                        //                                height: Dimensions.paddingSizeSmall),
+                        //                        singleVendor
+                        //                            ? const SizedBox()
+                        //                            : const Padding(
+                        //                                padding: EdgeInsets.only(
+                        //                                    bottom: Dimensions.homePagePadding),
+                        //                                child: TopSellerView(isHomePage: true),
+                        //                              ),
+
+                        //footer banner
+                        // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
+                        //   return footerBannerProvider.footerBannerList != null && footerBannerProvider.footerBannerList!.isNotEmpty?
+                        //   const Padding(
+                        //     padding: EdgeInsets.only(bottom: Dimensions.homePagePadding),
+                        //     child: FooterBannersView(index: 0,),
+                        //   ):const SizedBox();
+                        // }),
+                        //
+
+                        // Featured Products
+
+                        //
+                        // Padding(
+                        //   padding: const EdgeInsets.only(
+                        //       bottom: Dimensions.homePagePadding),
+                        //   child: FeaturedProductView(
+                        //     scrollController: _scrollController,
+                        //     isHome: true,
+                        //   ),
+                        // ),
+
+                        // Featured Deal
+
+                        // Consumer<FeaturedDealProvider>(
+                        //   builder: (context, featuredDealProvider, child) {
+                        //     return  featuredDealProvider.featuredDealProductList.isNotEmpty ?
+                        //     Padding(padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
+                        //       child: TitleRow(title: getTranslated('featured_deals', context),
+                        //           onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => const FeaturedDealScreen()));}),
+                        //     ) : const SizedBox.shrink();},),
+                        //
+                        // Consumer<FeaturedDealProvider>(
+                        //   builder: (context, featuredDealProvider, child) {
+                        //     return  featuredDealProvider.featuredDealProductList.isNotEmpty ?
+                        //    SizedBox(height: featuredDealProvider.featuredDealProductList.length> 4 ? 120 * 4.0 : 120 * (double.parse(featuredDealProvider.featuredDealProductList.length.toString())),
+                        //         child: const Padding(
+                        //           padding: EdgeInsets.only(bottom: Dimensions.homePagePadding),
+                        //           child: FeaturedDealsView(),
+                        //         )) : const SizedBox.shrink();},),
+                        //
+                        //
+
+                        // const Padding(
+                        //   padding: EdgeInsets.only(
+                        //       bottom: Dimensions.homePagePadding),
+                        //   child: RecommendedProductView(),
+                        // ),
+
+                        //footer banner
+                        // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
+                        //   return footerBannerProvider.mainSectionBannerList != null &&
+                        //       footerBannerProvider.mainSectionBannerList!.isNotEmpty?
+                        //   const Padding(
+                        //     padding: EdgeInsets.only(bottom: Dimensions.homePagePadding),
+                        //     child: MainSectionBannersView(index: 0,),
+                        //   ):const SizedBox();
+                        //
+                        // }),
+                        //
+
+                        // Latest Products
+
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 7,vertical: Dimensions.paddingSizeExtraSmall),
+                        //   child: TitleRow(title: getTranslated('latest_products', context),
+                        //       onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => AllProductScreen(
+                        //           productType: ProductType.latestProduct)));}),
+                        // ),
+                        // const SizedBox(height: Dimensions.paddingSizeSmall),
+                        // LatestProductView(scrollController: _scrollController),
+                        // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+                        //Home category
+                        // const HomeCategoryProductView(isHomePage: true),
+                        // const SizedBox(height: Dimensions.homePagePadding),
+
+                        //footer banner
+                        // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
+                        //   return footerBannerProvider.footerBannerList != null && footerBannerProvider.footerBannerList!.length>1?
+                        //   const FooterBannersView(index: 1):const SizedBox();
+                        // }),
+                        // const SizedBox(height: Dimensions.homePagePadding),
+
+                        //Category filter
+                        // Consumer<ProductProvider>(
+                        //     builder: (ctx, prodProvider, child) {
+                        //   return Padding(
+                        //     padding: const EdgeInsets.symmetric(
+                        //         horizontal: Dimensions.paddingSizeExtraSmall,
+                        //         vertical: Dimensions.paddingSizeExtraSmall),
+                        //     child: Row(children: [
+                        //       Expanded(
+                        //           child: Text(
+                        //               prodProvider.title == 'xyz'
+                        //                   ? getTranslated(
+                        //                       'new_arrival', context)!
+                        //                   : prodProvider.title!,
+                        //               style: titleHeader)),
+                        //       prodProvider.latestProductList != null
+                        //           ? PopupMenuButton(
+                        //               itemBuilder: (context) {
+                        //                 return [
+                        //                   PopupMenuItem(
+                        //                       value: ProductType.newArrival,
+                        //                       textStyle: robotoRegular.copyWith(
+                        //                         color:
+                        //                             Theme.of(context).hintColor,
+                        //                       ),
+                        //                       child: Text(getTranslated(
+                        //                           'new_arrival', context)!)),
+                        //                   PopupMenuItem(
+                        //                       value: ProductType.topProduct,
+                        //                       textStyle: robotoRegular.copyWith(
+                        //                         color:
+                        //                             Theme.of(context).hintColor,
+                        //                       ),
+                        //                       child: Text(getTranslated(
+                        //                           'top_product', context)!)),
+                        //                   PopupMenuItem(
+                        //                       value: ProductType.bestSelling,
+                        //                       textStyle: robotoRegular.copyWith(
+                        //                         color:
+                        //                             Theme.of(context).hintColor,
+                        //                       ),
+                        //                       child: Text(getTranslated(
+                        //                           'best_selling', context)!)),
+                        //                   PopupMenuItem(
+                        //                       value:
+                        //                           ProductType.discountedProduct,
+                        //                       textStyle: robotoRegular.copyWith(
+                        //                         color:
+                        //                             Theme.of(context).hintColor,
+                        //                       ),
+                        //                       child: Text(getTranslated(
+                        //                           'discounted_product',
+                        //                           context)!)),
+                        //                 ];
+                        //               },
+                        //               shape: RoundedRectangleBorder(
+                        //                   borderRadius: BorderRadius.circular(
+                        //                       Dimensions.paddingSizeSmall)),
+                        //               child: Padding(
+                        //                 padding: const EdgeInsets.symmetric(
+                        //                     horizontal:
+                        //                         Dimensions.paddingSizeSmall,
+                        //                     vertical:
+                        //                         Dimensions.paddingSizeSmall),
+                        //                 child: Image.asset(
+                        //                   Images.dropdown,
+                        //                   scale: 3,
+                        //                 ),
+                        //               ),
+                        //               onSelected: (dynamic value) {
+                        //                 if (value == ProductType.newArrival) {
+                        //                   Provider.of<ProductProvider>(context,
+                        //                           listen: false)
+                        //                       .changeTypeOfProduct(
+                        //                           value, types[0]);
+                        //                 } else if (value ==
+                        //                     ProductType.topProduct) {
+                        //                   Provider.of<ProductProvider>(context,
+                        //                           listen: false)
+                        //                       .changeTypeOfProduct(
+                        //                           value, types[1]);
+                        //                 } else if (value ==
+                        //                     ProductType.bestSelling) {
+                        //                   Provider.of<ProductProvider>(context,
+                        //                           listen: false)
+                        //                       .changeTypeOfProduct(
+                        //                           value, types[2]);
+                        //                 } else if (value ==
+                        //                     ProductType.discountedProduct) {
+                        //                   Provider.of<ProductProvider>(context,
+                        //                           listen: false)
+                        //                       .changeTypeOfProduct(
+                        //                           value, types[3]);
+                        //                 }
+                        //
+                        //                 ProductView(
+                        //                     isHomePage: false,
+                        //                     productType: value,
+                        //                     scrollController:
+                        //                         _scrollController);
+                        //                 Provider.of<ProductProvider>(context,
+                        //                         listen: false)
+                        //                     .getLatestProductList(1,
+                        //                         reload: true);
+                        //               })
+                        //           : const SizedBox(),
+                        //     ]),
+                        //   );
+                        // }),
+                        // ProductView(
+                        //     isHomePage: false,
+                        //     productType: ProductType.newArrival,
+                        //     scrollController: _scrollController),
+                        // const SizedBox(height: Dimensions.homePagePadding),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+            // Provider.of<SplashProvider>(context, listen: false)
+            //             .configModel!
+            //             .announcement!
+            //             .status ==
+            //         '1'
+            //     ? Positioned(
+            //         top: MediaQuery.of(context).size.height - 128,
+            //         left: 0,
+            //         right: 0,
+            //         child: Consumer<SplashProvider>(
+            //           builder: (context, announcement, _) {
+            //             return (announcement.configModel!.announcement!
+            //                             .announcement !=
+            //                         null &&
+            //                     announcement.onOff)
+            //                 ? AnnouncementScreen(
+            //                     announcement:
+            //                         announcement.configModel!.announcement)
+            //                 : const SizedBox();
+            //           },
+            //         ),
+            //       )
+            //     : const SizedBox(),
+          ))
         ],
       ),
     );
@@ -2110,8 +2188,8 @@ class SliverDelegate extends SliverPersistentHeaderDelegate {
 //             selectInitialPosition: true,
 //             enableMyLocationButton: true,
 //             apiKey: Platform.isAndroid
-//                 ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-//                 : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
+//                 ? ""
+//                 : "",
 //             onPlacePicked: (result) {
 //               print(
 //                   'Full Address: ${result.formattedAddress}');

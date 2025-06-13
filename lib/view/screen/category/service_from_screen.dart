@@ -294,8 +294,8 @@ class _ServiceFromScreenState extends State<ServiceFromScreen> {
                     //   MaterialPageRoute(
                     //     builder: (context) => PlacePicker(
                     //       apiKey: Platform.isAndroid
-                    //           ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-                    //           : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
+                    //           ? ""
+                    //           : "",
                     //       onPlacePicked: (result) {
                     //         print('assaafsdf${result.formattedAddress}');
                     //         setState(() {
@@ -317,9 +317,7 @@ class _ServiceFromScreenState extends State<ServiceFromScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => PlacePicker(
-                          apiKey: Platform.isAndroid
-                              ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-                              : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
+                          apiKey: "",
                           onPlacePicked: (result) {
                             print('Full Address: ${result.formattedAddress}');
 

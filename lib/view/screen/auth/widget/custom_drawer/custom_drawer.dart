@@ -1,5 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/splash_provider.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/more/faq_screen.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/more/widget/html_view_screen.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/referals/referals_screen.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/wallet/wallet_screen.dart';
+import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -9,9 +16,9 @@ class CustomDrawer extends StatelessWidget {
       child: Stack(
         children: [
           SizedBox.expand(
-            child: Image.asset("assets/images/categorybg.png", fit: BoxFit.cover),
+            child:
+                Image.asset("assets/images/categorybg.png", fit: BoxFit.cover),
           ),
-
           Positioned.fill(
             child: Column(
               children: [
@@ -36,9 +43,11 @@ class CustomDrawer extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                 ),
-                                Text("More", style: TextStyle(fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
+                                Text("More",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
                               ],
                             ),
                           ),
@@ -55,8 +64,7 @@ class CustomDrawer extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Loyalty Points",
@@ -84,8 +92,7 @@ class CustomDrawer extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Enquiry",
@@ -107,14 +114,47 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => WalletScreen()));
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Wallet",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    fontFamily: "Bricolage Grotesque",
+                                  ),
+                                ),
+                                Image.asset(
+                                  "assets/images/Vector (1).png",
+                                  fit: BoxFit.cover,
+                                  width: 10,
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => ReferealsScreen()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Refer and Earn",
@@ -136,14 +176,24 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => HtmlViewScreen(
+                                          title: getTranslated(
+                                              'privacy_policy', context),
+                                          url: Provider.of<SplashProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .configModel!
+                                              .privacyPolicy,
+                                        )));
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Privacy Policy",
@@ -165,14 +215,24 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => HtmlViewScreen(
+                                          title: getTranslated(
+                                              'terms_condition', context),
+                                          url: Provider.of<SplashProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .configModel!
+                                              .termsConditions,
+                                        )));
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Terms and Conditions",
@@ -194,14 +254,18 @@ class CustomDrawer extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => FaqScreen(
+                                          title: 'Faq',
+                                        )));
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "FAQ’s",
@@ -229,8 +293,7 @@ class CustomDrawer extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16.0, vertical: 12.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   "Customer Support",
@@ -251,7 +314,6 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
 
-
                         SizedBox(height: 20),
                       ],
                     ),
@@ -261,50 +323,49 @@ class CustomDrawer extends StatelessWidget {
                 // Positioned.fill(child: Text("Logout")),
 
                 // Logout image pinned to the bottom
-                Stack(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(),
-                        child: Image.asset(
-                          "assets/images/logout.png",
-                          fit: BoxFit.cover,
-                          width: 310, // Adjust size as needed
-                        ),
-                      ),
-                      SizedBox(height: 20, width: 50,),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16, left: 10),
-                        child: Positioned.fill(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.power_settings_new,
-                                  color: Colors.white, size: 24),
-                              SizedBox(width: 8),
-                              GestureDetector(
-                                onTap: () {
-                                  _showLogoutDialog(context);
-                                },
-                                child: Text(
-                                  "Log Out",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
+                Stack(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: Image.asset(
+                      "assets/images/logout.png",
+                      fit: BoxFit.cover,
+                      width: 310, // Adjust size as needed
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                    width: 50,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16, left: 10),
+                    child: Positioned.fill(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.power_settings_new,
+                              color: Colors.white, size: 24),
+                          SizedBox(width: 8),
+                          GestureDetector(
+                            onTap: () {
+                              _showLogoutDialog(context);
+                            },
+                            child: Text(
+                              "Log Out",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-
-                      )
-                    ]
-                ),
+                        ],
+                      ),
+                    ),
+                  )
+                ]),
               ],
             ),
           ),
-
         ],
       ),
     );
@@ -330,7 +391,8 @@ class CustomDrawer extends StatelessWidget {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor:Theme.of(context).primaryColor, // Primary color
+                backgroundColor:
+                    Theme.of(context).primaryColor, // Primary color
                 foregroundColor: Colors.white, // Text color
               ),
               onPressed: () {
@@ -344,5 +406,4 @@ class CustomDrawer extends StatelessWidget {
       },
     );
   }
-
 }
