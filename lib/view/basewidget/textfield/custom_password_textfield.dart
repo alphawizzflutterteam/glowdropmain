@@ -9,7 +9,15 @@ class CustomPasswordTextField extends StatefulWidget {
   final Icon? prefixIcon;
   final TextInputAction? textInputAction;
 
-  const CustomPasswordTextField({Key? key, this.controller, this.hintTxt, this.focusNode, this.nextNode, this.textInputAction, this.prefixIcon}) : super(key: key);
+  const CustomPasswordTextField(
+      {Key? key,
+      this.controller,
+      this.hintTxt,
+      this.focusNode,
+      this.nextNode,
+      this.textInputAction,
+      this.prefixIcon})
+      : super(key: key);
 
   @override
   CustomPasswordTextFieldState createState() => CustomPasswordTextFieldState();
@@ -30,16 +38,20 @@ class CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(6),
         boxShadow: [
-          BoxShadow(color: Colors.grey.withOpacity(0.2), spreadRadius: 1, blurRadius: 7, offset: const Offset(0, 1)) // changes position of shadow
+          BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 1,
+              blurRadius: 7,
+              offset: const Offset(0, 1)) // changes position of shadow
         ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: TextFormField(
-          cursorColor: Theme.of(context).primaryColor,
+          cursorColor: Theme.of(context).cardColor,
           controller: widget.controller,
           obscureText: _obscureText,
           focusNode: widget.focusNode,
@@ -55,15 +67,22 @@ class CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
             return null;
           },
           decoration: InputDecoration(
-              suffixIcon: IconButton(icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility), onPressed: _toggle),
+              suffixIcon: IconButton(
+                  icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility),
+                  onPressed: _toggle),
               hintText: widget.hintTxt ?? '',
-              contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 15),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 15),
               isDense: true,
               filled: true,
-              prefixIcon: widget.prefixIcon?? SizedBox(),
-              fillColor: Theme.of(context).highlightColor,
-              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).primaryColor)),
-              hintStyle: titilliumRegular.copyWith(color: Theme.of(context).hintColor),
+              prefixIcon: widget.prefixIcon ?? SizedBox(),
+              fillColor: Theme.of(context).cardColor,
+              focusedBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Theme.of(context).primaryColor)),
+              hintStyle:
+                  titilliumRegular.copyWith(color: Theme.of(context).hintColor),
               border: InputBorder.none),
         ),
       ),

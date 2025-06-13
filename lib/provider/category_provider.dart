@@ -11,7 +11,6 @@ class CategoryProvider extends ChangeNotifier {
 
   CategoryProvider({required this.categoryRepo});
 
-
   final List<Category> _categoryList = [];
   int? _categorySelectedIndex;
 
@@ -29,22 +28,26 @@ class CategoryProvider extends ChangeNotifier {
 
     try {
       ApiResponse apiResponse = await categoryRepo!.fetchCategories();
-      apiResponse.response!.data.forEach((category) => _categories.add(SlectCategory.fromJson(category)));
+      apiResponse.response!.data.forEach(
+          (category) => _categories.add(SlectCategory.fromJson(category)));
     } catch (e) {
       print(e.toString());
     }
     _isLoading = false;
     notifyListeners();
   }
+
   Future<void> getCategoryList(bool reload) async {
     if (_categoryList.isEmpty || reload) {
       ApiResponse apiResponse = await categoryRepo!.getCategoryList();
-      if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      if (apiResponse.response != null &&
+          apiResponse.response!.statusCode == 200) {
         _categoryList.clear();
-        apiResponse.response!.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
+        apiResponse.response!.data.forEach(
+            (category) => _categoryList.add(Category.fromJson(category)));
         _categorySelectedIndex = 0;
       } else {
-        ApiChecker.checkApi( apiResponse);
+        ApiChecker.checkApi(apiResponse);
       }
       notifyListeners();
     }
@@ -54,6 +57,7 @@ class CategoryProvider extends ChangeNotifier {
     _categorySelectedIndex = selectedIndex;
     notifyListeners();
   }
+
   final List<Category> _serviceCategoryList = [];
   int? _serviceCategorySelectedIndex;
 
@@ -63,12 +67,14 @@ class CategoryProvider extends ChangeNotifier {
   Future<void> getServiceCategoryList(bool reload) async {
     if (_serviceCategoryList.isEmpty || reload) {
       ApiResponse apiResponse = await categoryRepo!.getServiceCategoryList();
-      if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      if (apiResponse.response != null &&
+          apiResponse.response!.statusCode == 200) {
         _serviceCategoryList.clear();
-        apiResponse.response!.data.forEach((category) => _serviceCategoryList.add(Category.fromJson(category)));
+        apiResponse.response!.data.forEach((category) =>
+            _serviceCategoryList.add(Category.fromJson(category)));
         _categorySelectedIndex = 0;
       } else {
-        ApiChecker.checkApi( apiResponse);
+        ApiChecker.checkApi(apiResponse);
       }
       notifyListeners();
     }

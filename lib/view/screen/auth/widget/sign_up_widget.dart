@@ -236,8 +236,10 @@ class SignUpWidgetState extends State<SignUpWidget> {
         register.lat = _latController.text;
         register.long = _longController.text;
         register.area = _areaController.text;
-        await Provider.of<AuthProvider>(context, listen: false)
-            .registration(register, route,);
+        await Provider.of<AuthProvider>(context, listen: false).registration(
+          register,
+          route,
+        );
       }
     } else {
       isEmailVerified = false;
@@ -427,14 +429,15 @@ class SignUpWidgetState extends State<SignUpWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-
                     Image.asset(
                       "assets/images/userdetails.png",
                       width: MediaQuery.of(context).size.width * 0.8,
                       fit: BoxFit.cover,
                     ),
                     const SizedBox(height: 30),
-Row(children: [],),
+                    Row(
+                      children: [],
+                    ),
                     const Text(
                       "First Name",
                       style: TextStyle(
@@ -443,7 +446,6 @@ Row(children: [],),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
                     const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
@@ -467,7 +469,6 @@ Row(children: [],),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
                     const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
@@ -482,7 +483,8 @@ Row(children: [],),
                           contentPadding: EdgeInsets.symmetric(horizontal: 16),
                         ),
                       ),
-                    ),    const Text(
+                    ),
+                    const Text(
                       "Email",
                       style: TextStyle(
                         color: ColorResources.primary,
@@ -490,7 +492,6 @@ Row(children: [],),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
                     const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
@@ -505,7 +506,8 @@ Row(children: [],),
                           contentPadding: EdgeInsets.symmetric(horizontal: 16),
                         ),
                       ),
-                    ),   const Text(
+                    ),
+                    const Text(
                       "Phone Number",
                       style: TextStyle(
                         color: ColorResources.primary,
@@ -513,7 +515,6 @@ Row(children: [],),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
                     const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
@@ -539,7 +540,6 @@ Row(children: [],),
                       ),
                     ),
                     const SizedBox(height: 10),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -548,7 +548,6 @@ Row(children: [],),
                         _buildGenderOption("Male"),
                       ],
                     ),
-
                     const SizedBox(height: 20),
                     const Text(
                       "Date of Birth",
@@ -623,7 +622,6 @@ Row(children: [],),
                         ),
                       ),
                     ),
-
                     SizedBox(
                       height: 40,
                     ),
@@ -679,7 +677,6 @@ Row(children: [],),
                               onTap: addUser,
                               buttonText: getTranslated('SIGN_UP', context)),
                     ),
-
                   ],
                 ),
               ),
@@ -956,8 +953,8 @@ Row(children: [],),
 //                               builder: (context) => PlacePicker(
 //                                 selectInitialPosition: true,
 //                                 apiKey: Platform.isAndroid
-//                                     ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-//                                     : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
+//                                     ? ""
+//                                     : "",
 //                                 onPlacePicked: (result) {
 //                                   print(
 //                                       'Full Address: ${result.formattedAddress}');
@@ -1032,8 +1029,8 @@ Row(children: [],),
 //                       //       MaterialPageRoute(
 //                       //         builder: (context) => PlacePicker(
 //                       //           apiKey: Platform.isAndroid
-//                       //               ? "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY"
-//                       //               : "AIzaSyDp5WRm4NU2C0C6NeNkBY1uOUnpGl6ChKY",
+//                       //               ? ""
+//                       //               : "",
 //                       //           onPlacePicked: (result) {
 //                       //             print('Full Address: ${result.formattedAddress}');
 //                       //
